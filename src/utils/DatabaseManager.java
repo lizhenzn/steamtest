@@ -1,32 +1,37 @@
 package utils;
-
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
-
-public class DatabaseManager  {
+public class DatabaseManager {
 private static String  URL="jdbc:mysql://localhost:3306/steam";
 private static String  USER="root";
-private static String  PSW="010233";
-private  static Connection connection=null;
-/*
-public  static ResultSet show(String table) throws ClassNotFoundException, SQLException
+private static String  PSW="123456";
+private static Connection connection=null;
+
+public static  void createConnection()
 {
-	Statement stmt=null;
-	stmt=connection.createStatement();
-	String sql="SELECT * FROM "+table;
-	ResultSet rest=stmt.executeQuery(sql);
-	while(rest.next())
-	{
-		System.out.println( rest.getString(1)+"   "+rest.getString(2)+"     "+rest.getString(3)+"\n");
-	}
-	return rest;
+	if(connection==null)
+	{	
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					connection=DriverManager.getConnection(URL, USER, PSW);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}	
 }
-*/
+
 public  static void refresh(String sql) throws SQLException
 {
+	   createConnection();
 		Statement stmt=null;
 			stmt=connection.createStatement();
 		stmt.executeUpdate(sql);
@@ -45,22 +50,9 @@ public static void update(String sql) throws SQLException
 }
 public static ResultSet search(String sql) throws ClassNotFoundException, SQLException
 {
-	   Connection connection=null;
-		Statement stmt=null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			connection=DriverManager.getConnection(URL, USER, PSW);
+	 Statement stmt=null;
+	        createConnection();
 			stmt=connection.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	//	String sql="SELECT * FROM "+table;
 		ResultSet rest=null;
 		if(stmt==null)
 			return null;
@@ -71,13 +63,12 @@ public static ResultSet search(String sql) throws ClassNotFoundException, SQLExc
 
 public Connection  getConnection()
 {
-	if(connection!=null)
-	return connection;
-	else
-		return null;
+	if(connection==null)
+	   createConnection();
+		return connection;
 }
 
-public void closeConnection()
+public static void closeConnection()
 {
 	try {
 		connection.close();
@@ -93,3 +84,5 @@ set character_set_client=gbk;
 set character_set_connection=utf8;
 set character_set_results=gbk;
 */
+
+
