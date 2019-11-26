@@ -53,7 +53,7 @@
  	<input type="submit"/>
  	</form> 
  	</div>
- 	<%} %>
+ 	<%}%>
  	
  	</div>
 </body>
