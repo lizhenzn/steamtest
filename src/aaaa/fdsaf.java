@@ -1,6 +1,7 @@
 package aaaa;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class fdsaf extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PreparedStatement ps=null;
 	}
 
 	/**

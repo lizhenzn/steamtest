@@ -1,6 +1,8 @@
 package databeans;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class GameInfo implements Serializable {
 	public GameInfo(){}
@@ -17,6 +19,19 @@ public class GameInfo implements Serializable {
 		setRsc(rsc);
 		setSells(sells);
 		setPrice(price);
+	}
+	public GameInfo(ResultSet rs) {
+		try {setGameid(rs.getString("gid"));} catch (SQLException e) {}
+		try {setName(rs.getString("name"));} catch (SQLException e) {}
+		try {setIntro(rs.getString("intro"));} catch (SQLException e) {}
+		try {setImg1(rs.getString("img1"));} catch (SQLException e) {}
+		try {setImg2(rs.getString("img2"));} catch (SQLException e) {}
+		try {setImg3(rs.getString("img3"));} catch (SQLException e) {}
+		try {setPrice(rs.getFloat("price"));} catch (SQLException e) {}
+		try {setDiscount(rs.getString("discount"));} catch (SQLException e) {}
+		try {setType(rs.getString("type"));} catch (SQLException e) {}
+		try {setSells(rs.getInt("sells"));} catch (SQLException e) {}
+		try {setRsc(rs.getString("rsc"));} catch (SQLException e) {}
 	}
 	private String gameid;
 	private String name;

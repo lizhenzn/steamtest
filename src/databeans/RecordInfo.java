@@ -1,6 +1,8 @@
 package databeans;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class RecordInfo implements Serializable {
@@ -12,6 +14,13 @@ public class RecordInfo implements Serializable {
         setStatus(status);
         setTimestamp(timestamp);
         setPrice(price);
+    }
+    public RecordInfo(ResultSet rs) {
+    	try {setUser_email(rs.getString("user_email"));} catch (SQLException e) {}
+    	try {setGid(rs.getString("gid"));} catch (SQLException e) {}
+    	try {setStatus(rs.getString("status"));} catch (SQLException e) {}
+    	try {setTimestamp(rs.getTimestamp("timestamp"));} catch (SQLException e) {}
+    	try {setPrice(rs.getFloat("price"));} catch (SQLException e) {}
     }
     private String user_email;
     private String gid;

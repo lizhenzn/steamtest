@@ -1,6 +1,8 @@
 package databeans;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserInfo implements Serializable {
 	public UserInfo(){
@@ -10,6 +12,12 @@ public class UserInfo implements Serializable {
 		this.username=username;
 		this.password=password;
 		this.money=money;
+	}
+	public UserInfo(ResultSet rs) {
+		try {setEmail(rs.getString("email"));} catch (SQLException e) {}
+		try {setUsername(rs.getString("username"));} catch (SQLException e) {}
+		try {setPassword(rs.getString("password"));} catch (SQLException e) {}
+		try {setMoney(rs.getFloat("money"));} catch (SQLException e) {}
 	}
 	private String email;
 	private String username;
