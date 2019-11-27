@@ -31,7 +31,9 @@ var psw=document.getElementById('psw');
 	
 	if(!user.value){
 		alert('用户名不能为空');
+		
 	}
+	
 	if(!psw.value){
 		alert('密码不能为空');
 	}
