@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html;"
     pageEncoding="UTF-8"%>
-<%@page import="databeans.*" %>
+<%@page import="databeans.GameInfo" %>
+<%@page import="databeans.UserInfo" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="utils.DBCPManager" %>
 <%@page import="java.sql.Connection" %>
-<%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.PreparedStatement" %>
 
@@ -18,6 +18,7 @@
  		ArrayList<GameInfo> gameRepo=null;
  		UserInfo user=null;
  		int count=0;
+ 		int pages=0,index=0;
  		user=(UserInfo)session.getAttribute("userinfo");
  		if(user!=null){
  		gameRepo=(ArrayList<GameInfo>)session.getAttribute("gamerepo");
@@ -40,11 +41,12 @@
 		 		count=ps.executeQuery().getInt("nums");
 		 		System.out.println("get num");
 	 			conn.close();
+	 			count=gameRepo.size();
+	 			pages=(count+9)/10;
 	 		}
  		}//至此，当用户登录时，将获取用户游戏列表，放入session，并获得游戏数量用来翻页
  		//每次进入页面都查一下游戏数量真的好吗？
  		//是否有必要考虑用户游戏列表数量过大？
- 		
  	%>
  	<div>
  	<%if(gameRepo!=null)for(int i=0;i<gameRepo.size();i++){%>
