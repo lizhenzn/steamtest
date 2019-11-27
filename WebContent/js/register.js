@@ -3,7 +3,7 @@
  */
 //验证表单是否为空，若为空则将焦点聚焦在input表单上，否则表单通过，登录成功
 var systemURL="http://localhost:8080/SteamSimulator/register";
-var indexUrl="http://localhost:8080/SteamSimulator/index.jsp";
+var loginUrl="http://localhost:8080/SteamSimulator/login.jsp";
 function check(form){
   var accountName = $("#accountName"),password = $("#password"),userEmail=$("#userEmail");
   var accountName = accountName.val(),password = password.val(),userEmail=userEmail.val();
@@ -39,10 +39,10 @@ function check(form){
         if (data == "success") { //判断返回值，这里根据的业务内容可做调整
         	//显示跳转提示
         	console.log(data);
-            setTimeout(function () {//做延时以便显示登录状态
+            setTimeout(function () {//做延时以便显示注册状态
             	var inform="";
             	showMsg(inform);
-            	window.location.href = indexUrl;//指向登录的页面地址
+            	window.location.href = loginUrl;//指向登录的页面地址
             },3000);
           } else if(data="already"){
         	  showMsg("该邮箱已经被注册！");
@@ -62,7 +62,24 @@ function check(form){
 function showMsg(msg){
   $("#CheckMsg").text(msg);
 }
- 
+
+function onRegister(){
+	var htmlcontent=" <form id='user_login' action=‘’>" +
+      "<h3>欢迎加入 Steam(Simulator)</h3>"+
+      "<input class='name' name='' id='userEmail' type='text' placeholder='请输入邮箱'>"+
+     "<input class='name' name='' id='accountName' type='text' placeholder='请输入用户名'>"+
+      "<input class='code' name='password' id='password' type='password' placeholder='请输入密码'>"+
+      "<div class='btn'>"+
+        "<input type='button' id='submit' class='submit' value='注册' onclick='return check(this.form);'>"+
+      "</div>"+
+       " <div id='CheckMsg' class='msg'></div>"+
+   " </form>";
+	//$("#login_register").innerHTML=htmlcontent;
+	document.getElementById("login_register").innerHTML=htmlcontent;
+	console.log("in func register");
+	return;
+}
+
 //监听回车键提交
 function bindEnter(){
   document.onkeydown=keyDownSearch;
