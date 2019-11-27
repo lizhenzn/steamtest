@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			if(conn!=null) {
 				System.out.println("数据库连接成功");
 			}
-			String sql="select * from user where email=? and psw=?";
+			String sql="select * from user where email=? and password=?";
 			try {
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, user);
