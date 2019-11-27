@@ -2,6 +2,7 @@
     <wb-module deploy-name="SteamSimulator">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent/css"/>
         <property name="context-root" value="SteamSimulator"/>
         <property name="java-output-path" value="/SteamSimulator/build/classes"/>
     </wb-module>

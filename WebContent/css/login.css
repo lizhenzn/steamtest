@@ -1,0 +1,103 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	position: relative;
+}
+.head .title {
+	font-family: "STSong";
+	color: #FFFFFF;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+	font-size: 36px;
+	height: 40px;
+	width: 30%;
+}
+.head {
+	height: 180px;
+	width: 100%;
+	background-color: rgb(40, 48, 48);
+	text-align: center;
+
+}
+.wrap {
+	height: 700px;
+	width: 100%;
+	position: relative;
+	background-color: rgb(13, 73, 73);
+	background-image: url(4.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.foot {
+	width: 100%;
+	height: 100px;
+	bottom:0;
+	background-color: rgb(13, 26, 61);
+	position: absolute;
+}
+.wrap .login_frame {
+	box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 
+	border-radius: 6px;
+
+	width: 300px;  
+	right:15%;
+	top:20%;
+	position: absolute;
+	background-color: #FFFFFF;
+}
+.wrap .login_frame .login_tip{
+	margin:10px auto;
+	display: block;
+	font-family: STSong;
+	font-size: 36px;
+	height: 40px;
+	width: 100%;
+	text-align: center;
+
+}
+.wrap .login_frame input{
+	margin: 18px auto;
+	width: 86%;
+	font-size:14px;
+	padding: 10px;
+	border: #00f solid 1px;
+	border-radius: 6px;
+	display: block;
+}
+.login_frame button{
+	margin:20px auto;
+	width:86%;
+	padding: 10px;
+	display: block;
+	border-radius: 6px;	
+	background-color: rgb(68, 194, 194);
+}
+.login_frame a{
+	text-decoration: none;
+	display: block;
+	margin-bottom:60px;
+	margin-top:20px;
+	margin-right:10px;
+}
+.wrap .content{
+	box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 
+
+	position: relative;
+	float: left;
+
+	width: 400px;
+	height:60%;
+	top:10%;
+	left:20%;
+	border-radius: 6px;
+	color:turquoise;
+	font-size: 66px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color:rgb(80, 90, 117);
+
+}
