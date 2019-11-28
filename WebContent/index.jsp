@@ -3,22 +3,25 @@
 
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.ResultSet" %>
-
+<%@page import="java.sql.DriverManager" %>
 <%@page import="index.*" %>
 <%@page import="java.util.*" %>
-
+<%@page import="utils.*" %>
+<%@page import="databeans.*" %>
+<% Connection conn; %>
+<% if((conn=DBCPManager.getConn())==null){ %>
+<% System.out.print("fail to connect dbcp\n"); %>
+<% }else { %>
+<%  System.out.print("connect to dbcp successfully\n");} %>
 <% GameList gameList=new GameList(); %>
-<% gameList.addItem("test.png","name1");%>
-<% gameList.addItem("test.png","name2");%>
-<% gameList.addItem("test.png","name3");%>
-<% gameList.addItem("test.png","name4");%>
-<% gameList.addItem("test.png","name5");%>
-<% gameList.addItem("test.png","name6");%>
-<% gameList.addItem("test.png","name7");%>
-<% gameList.addItem("test.png","name8");%>
-<% gameList.addItem("test.png","name9");%>
-<% gameList.addItem("test.png","name10");%>
-<% gameList.addItem("test.png","name11");%>
+<%  ResultSet set= conn.createStatement().executeQuery("select * from game;"); %>
+<% while(set.next()){  %>
+<% gameList.addItem("test.png",set.getString("name")); %>
+<% gameList.addItem("test.png",set.getString("name")); %>
+<% gameList.addItem("test.png",set.getString("name")); %>
+<% }%>
+<% conn.close(); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -30,25 +33,18 @@
 	function nextPage(){
 		<% gameList.nextPage(); %>
 		var str =""
-	    str+='<caption>游戏信息</caption><tr><td><button onclick="nextPage()">下一页</button></td>'
-	    str+='<td><button onclick="lastPage()">上一页</button></td></tr>'
-		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(0)%>"/></a></td><td><%= gameList.getName(0) %></td></tr>' 	
-		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(1)%>"/></a></td><td><%= gameList.getName(1) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(2)%>"/></a></td><td><%= gameList.getName(2) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(3)%>"/></a></td><td><%= gameList.getName(3) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(4)%>"/></a></td><td><%= gameList.getName(4) %></td></tr>'
-	$("#gameInfo").html(str)
+		<%int m=0;%>
+		for(var i=0;<%=gameList.getImg(m)%>!=null;i=(i+1)%5){
+			str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(m)%>"/></a></td><td><%= gameList.getName(m) %></td></tr>'
+			console.log("\n"+str+"\n")
+			<%m++; %>
+		}
+	$("#gameInfo").html(str)	
 	}
 	function lastPage(){
 		<% gameList.lastPage(); %>
 		var str =""
-	    str+='<caption>游戏信息</caption><tr><td><button onclick="nextPage()">下一页</button></td>'
-		str+='<td><button onclick="lastPage()">上一页</button></td></tr>'	    
-	    str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(0)%>"/></a></td><td><%= gameList.getName(0) %></td></tr>' 	
-		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(1)%>"/></a></td><td><%= gameList.getName(1) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(2)%>"/></a></td><td><%= gameList.getName(2) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(3)%>"/></a></td><td><%= gameList.getName(3) %></td></tr>'
-  		str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(4)%>"/></a></td><td><%= gameList.getName(4) %></td></tr>'
+
 	$("#gameInfo").html(str)
 	}
 </script>
@@ -70,13 +66,14 @@
 </div>
 
 <div style="position:absolute;right:50px;top:10px;">
-	<% Object object=session.getAttribute("userinfo"); %>
+	<% Object object=session.getAttribute("user"); %>
 	<% if(object==null) {%>
 		<a href="login.jsp">登陆</a>
 		<a href="RegisterPage.jsp">注册</a>
 	<% } else { %>
-	用户名：... 账户余额：...<a href="">充值</a>
-	<%} %>
+	<% UserInfo user=(UserInfo)object;%>
+	用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="">充值</a>
+	<%}%>
 </div>
 <h1 style="position:absolute; left:700px;top:100px;">游戏信息</h1>
 </div>
@@ -97,27 +94,13 @@
   			</button>
   		</td>
   	</tr>
+  	<% for(int i=0;gameList.getImg(i)!=null;i=(i+1)%5){%>  
   	<tr>
-  			<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(0)%>"/></a></td>
-  			<td><%= gameList.getName(0) %></td>  		
-  	</tr>
-  	<tr>
-  		<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(1)%>"/></a></td>
-  		<td><%= gameList.getName(1) %></td>
-  	</tr>	
-  	<tr>
-  		<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(2)%>"/></a></td>
-  		<td><%= gameList.getName(2) %></td>
-  	</tr>	
-  	<tr>
-  		<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(3)%>"/></a></td>
-  		<td><%= gameList.getName(3) %></td>
-  	</tr>	
-  	<tr>
-  		<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(4)%>"/></a></td>
-  		<td><%= gameList.getName(4) %></td>
+  			<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
+  			<td><%= gameList.getName(i) %></td>  		
   	</tr>
   	
+  	<%}%>
   	  			
   </table>
 </div>

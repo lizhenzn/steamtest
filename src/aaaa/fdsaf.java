@@ -1,6 +1,7 @@
 package aaaa;
 
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
@@ -19,7 +20,6 @@ public class fdsaf extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public fdsaf() {
-    	
         super();
         // TODO Auto-generated constructor stub
     }

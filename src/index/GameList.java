@@ -17,7 +17,7 @@ public class GameList {
 		game_list.add(gameItem);
 	}
 	public GameItem getGameItem(int num) {
-		if(num+page*5>game_list.size())
+		if(num+page*5 >= game_list.size())
 			return null;
 		return game_list.get(num+page*5);
 	}
@@ -29,9 +29,15 @@ public class GameList {
 			page--;
 	}
 	public String getImg(int num) {
-		return getGameItem(num).img;
+		if(getGameItem(num)!=null)
+			return getGameItem(num).img;
+		else
+			return null;
 	}
 	public String getName(int num) {
-		return getGameItem(num).name;
+		if(getGameItem(num)!=null)
+			return getGameItem(num).name;
+		else
+			return null;
 	}
 }
