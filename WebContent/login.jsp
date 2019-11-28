@@ -23,7 +23,6 @@
 		<input type="text" placeholder="请输入用户名" id='user'>
 		<input type="password" placeholder="请输入密码" id='psw'>
 		<input type="button" onclick="login()" value="登录" style="background-color: turquoise;">
-		<a href=''>点击注册</a>
 		<button onclick="onRegister()">点击注册</button>
 		</div>
 		</form>

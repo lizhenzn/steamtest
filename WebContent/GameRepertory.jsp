@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>我的游戏库</title>
 </head>
 <%
  		ArrayList<GameInfo> gameRepo=null;
@@ -49,7 +49,6 @@
  			<script type="text/javascript">
  				alert("您尚未登录，请先登录！");
  				var url="index.jsp";
- 				//setTimeout(go, 3000);
  				go();
  				function go(){ 
  					location.href="login.jsp"; 

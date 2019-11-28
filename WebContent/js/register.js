@@ -65,7 +65,7 @@ function showMsg(msg){
 
 function onRegister(){
 	var htmlcontent=" <form id='user_login' action=‘’>" +
-      "<h3>欢迎加入 Steam(Simulator)</h3>"+
+      "<p class='login_tip'>欢迎加入 Steam(Simulator)</p>"+
       "<input class='name' name='' id='userEmail' type='text' placeholder='请输入邮箱'>"+
      "<input class='name' name='' id='accountName' type='text' placeholder='请输入用户名'>"+
       "<input class='code' name='password' id='password' type='password' placeholder='请输入密码'>"+
@@ -74,9 +74,7 @@ function onRegister(){
       "</div>"+
        " <div id='CheckMsg' class='msg'></div>"+
    " </form>";
-	//$("#login_register").innerHTML=htmlcontent;
 	document.getElementById("login_register").innerHTML=htmlcontent;
-	console.log("in func register");
 	return;
 }
 

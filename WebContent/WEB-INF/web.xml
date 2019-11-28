@@ -19,14 +19,16 @@
     <servlet-name>fdsaf</servlet-name>
     <url-pattern>/fdsaf</url-pattern>
   </servlet-mapping>
-   <servlet>
-    <description></description>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlets.LoginServlet</servlet-class>
-  </servlet>
   <servlet>
     <description></description>
     <servlet-name>RequestServlet</servlet-name>
     <servlet-class>servlets.RequestServlet</servlet-class>
+  </servlet>
+ 
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
 </web-app>
