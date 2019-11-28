@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import databeans.UserInfo;
 import utils.DBCPManager;
 
 /**
@@ -36,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
+		UserInfo userBean=null;
 		System.out.println("user:"+user+"   psw:"+psw);
 		if(user!=null&&psw!=null) {
 			Connection conn=DBCPManager.getConn();
@@ -50,6 +53,9 @@ public class LoginServlet extends HttpServlet {
 				ResultSet rs=ps.executeQuery();
 				if(rs.next()) {//已经存在
 					System.out.println("数据库有此人");
+					userBean=new UserInfo(rs);
+					HttpSession session=request.getSession();
+					session.setAttribute("user", userBean);
 					response.getWriter().print("success");
 					
 				}else {//可以插入

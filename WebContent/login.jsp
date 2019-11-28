@@ -63,9 +63,9 @@ var psw=document.getElementById('psw');
 		        if (data == "success") { //判断返回值，这里根据的业务内容可做调整
 		        	//显示跳转提示
 		        	console.log(data);
-		            setTimeout(function () {//做延时以便显示登录状态
+		            //setTimeout(function () {//做延时以便显示登录状态
 		            	window.location.href = indexUrl;//指向登录的页面地址
-		            },3000);
+		            //},3000);
 		          } else if(data="fail"){
 		        	  alert("登陆失败！");
 		          }
