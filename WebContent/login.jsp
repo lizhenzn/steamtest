@@ -17,7 +17,7 @@
 <div class="wrap">
 	<div class="content">Steam Simulator 您的游戏专属平台</div>
 	<div class="login_frame" id="login_register">
-		<form action="loginServlet" method="GET">
+		<form action="LoginServlet" method="GET">
 		<div class="login_frame">
 		<p class="login_tip">登录</p>
 		<input type="text" placeholder="请输入用户名" id='user'>

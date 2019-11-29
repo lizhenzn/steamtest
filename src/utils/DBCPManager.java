@@ -19,14 +19,12 @@ public class DBCPManager implements Serializable {
 		try {
 			p.load(DBCPManager.class.getClassLoader().getResourceAsStream("dbcp.properties"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
 		try {
 			ds=BasicDataSourceFactory.createDataSource(p);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -37,7 +35,6 @@ public class DBCPManager implements Serializable {
 			return ds.getConnection();
 		} catch (SQLException e) {
 			System.out.println("get conn error\n");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

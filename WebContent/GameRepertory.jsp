@@ -12,6 +12,7 @@
 <html>
 <head>
 <title>我的游戏库</title>
+<link href="css/login.css" rel="stylesheet" type="text/css">
 </head>
 <%
  		ArrayList<GameInfo> gameRepo=null;
@@ -21,8 +22,7 @@
  		int index;
  		if(request.getParameter("index")!=null)index=Integer.parseInt(request.getParameter("index"));
  		else index=1;
- 		
- 		user=(UserInfo)session.getAttribute("userinfo");
+ 		user=(UserInfo)session.getAttribute("user");
  	if(user!=null){
  		gameRepo=(ArrayList<GameInfo>)session.getAttribute("gamerepo");
 		 	if(gameRepo==null){//获取实例
@@ -58,23 +58,22 @@
  		}
  	%>
 <body>
- 	<div class="header">
- 	<%if(user!=null){ %><div class="userwelcome">欢迎您:<%=user.getUsername()%></div><%} %>
+ 	<div class="head">
+ 	<%if(user!=null){ %><div class="title">欢迎您:<%=user.getUsername()%></div><%} %>
  	</div>
- 	<div class="mainframe">
+ 	<div class="wrap">
  	<div id="message"></div>
  	<table>
  	<%if(gameRepo!=null)for(int i=10*(index-1);i<gameRepo.size()&&i<index*10;i++){%>
  	<tr><td>
  	 <form method="post">
- 	 <img  />
+ 	 <img  src="<%= gameRepo.get(i).getImg1()%>"/>
  	<input type="hidden" name="rscPath" value="<%= gameRepo.get(i).getRsc()%>"/>
  	<input type="submit" value="开始游戏"/>
  	</form> 
  	</td></tr>
  	<%} %>
  	</table>
- 	</div>
  	<div class="turnpage">
  	<form method="GET">
  		<input class="pagebutton" type="submit" <%if(index-1<1)out.print("disabled='disabled'"); %> value="< 上一页">
@@ -85,6 +84,8 @@
  		<input type="hidden" name="index"  value="<%=index+1 %>">
  	</form>
  	</div>
- 	<div class="trailer"></div>
+ 	</div>
+ 	
+ 	<div class="foot"></div>
 </body>
 </html>

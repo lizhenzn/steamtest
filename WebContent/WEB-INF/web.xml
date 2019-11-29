@@ -24,7 +24,6 @@
     <servlet-name>RequestServlet</servlet-name>
     <servlet-class>servlets.RequestServlet</servlet-class>
   </servlet>
- 
   <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
