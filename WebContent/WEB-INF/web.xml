@@ -29,6 +29,24 @@
     <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/RequestServlet</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>Index</display-name>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>servlets.Index</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/Index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IndexServlet</display-name>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>servlets.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/IndexServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

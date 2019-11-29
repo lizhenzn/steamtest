@@ -19,6 +19,9 @@
 <% gameList.addItem("test.png",set.getString("name")); %>
 <% gameList.addItem("test.png",set.getString("name")); %>
 <% gameList.addItem("test.png",set.getString("name")); %>
+<% gameList.addItem("test.png",set.getString("name")); %>
+<% gameList.addItem("test.png",set.getString("name")); %>
+<% gameList.addItem("test.png",set.getString("name")); %>
 <% }%>
 <% conn.close(); %>
 
@@ -31,14 +34,15 @@
 <script src="jquery-3.4.1.js"></script>
 <script>
 	function nextPage(){
+		<% System.out.print("enter nextPage\n");%>
 		<% gameList.nextPage(); %>
 		var str =""
-		<%int m=0;%>
-		for(var i=0;<%=gameList.getImg(m)%>!=null;i=(i+1)%5){
-			str+='<tr><td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(m)%>"/></a></td><td><%= gameList.getName(m) %></td></tr>'
-			console.log("\n"+str+"\n")
-			<%m++; %>
-		}
+		<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>"
+			str+='<tr>'
+				str+='<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>'
+				str+='<td><%= gameList.getName(i) %></td>'  		
+			str+='</tr>'
+		<%}%>"
 	$("#gameInfo").html(str)	
 	}
 	function lastPage(){
@@ -84,9 +88,9 @@
 	<table border=0 id="gameInfo" style="position:absolute;left:50px;">
   	<tr>
   		<td>
-  			<button onclick="nextPage()">
-  				下一页
-  			</button>
+  			<form>
+  				<input type="button" value="下一页">	
+  			</form>
   		</td>
   		<td>
   			<button onclick="lastPage()">
@@ -94,7 +98,7 @@
   			</button>
   		</td>
   	</tr>
-  	<% for(int i=0;gameList.getImg(i)!=null;i=(i+1)%5){%>  
+  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
   			<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
   			<td><%= gameList.getName(i) %></td>  		
