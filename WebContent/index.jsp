@@ -138,12 +138,13 @@
   
 	</div>
 	<div style="position:absolute;right:200px;top:0px;">
-  	<form  method="POST">
-  				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
+
+  	<form method="POST">
+  				<input type="submit"  value="上一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="lastPage">
   	</form>
-  	<form  method="POST">
-  				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
+  	<form method="POST">
+  				<input type="submit"  value="下一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="nextPage">
   	</form>
   </div>

@@ -22,6 +22,8 @@ public class GameList {
 		return game_list.get(num+page*5);
 	}
 	public  void nextPage() {
+		if((page+1)*5 >= game_list.size())
+			return ;
 		page++;
 	}
 	public  void lastPage() {
