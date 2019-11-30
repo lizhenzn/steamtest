@@ -46,7 +46,7 @@ public class topup extends HttpServlet {
 
 		
 		UserInfo user=(UserInfo) session.getAttribute("user");
-		sql="select money from user where email="+user.getEmail();
+		sql="select money from user where email="+"'"+user.getEmail()+"'";
 		ResultSet rest;
 	    try {
 			rest = DatabaseManager.search(sql);
@@ -54,8 +54,12 @@ public class topup extends HttpServlet {
 		  {
 				money=rest.getString("money");
 				money1=money1+Float.valueOf(money);
-		     sql="update user set money= "+money1+" where email= "+user.getEmail();
+		     sql="update user set money= "+money1+" where email= "+"'"+user.getEmail()+"'";
 		     DatabaseManager.update(sql);
+		     
+		     user.setMoney(money1);
+		     
+		     
 		  }
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
@@ -67,7 +71,7 @@ public class topup extends HttpServlet {
 	    
 		
 
-		
+	    response.sendRedirect("topup.jsp");
 	}
 
 	/**

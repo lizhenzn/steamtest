@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 public class DatabaseManager {
-private static String  URL="jdbc:mysql://localhost:3306/steam";
+private static String  URL="jdbc:mysql://localhost:3306/steam?serverTimezone=GMT&useUnicode=true";
 private static String  USER="root";
-private static String  PSW="z98745213n";
+private static String  PSW="123456";
 private static Connection connection=null;
 
 public static  void createConnection()
@@ -15,7 +15,7 @@ public static  void createConnection()
 	if(connection==null)
 	{	
 				try {
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName("com.mysql.cj.jdbc.Driver");
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
