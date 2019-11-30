@@ -117,10 +117,9 @@
 	<% Object object=session.getAttribute("user"); %>
 	<% if(object==null) {%>
 		<a href="login.jsp">登陆</a>
-		<a href="RegisterPage.jsp">注册</a>
 	<% } else { %>
 	<% UserInfo user=(UserInfo)object;%>
-	<h3>用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="">充值</a></h3>
+	<h3>用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="topup.jsp">充值</a></h3>
 	<%}%>
 </div>
 <h1 style="position:absolute; left:700px;top:100px;">游戏商店</h1>

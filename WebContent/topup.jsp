@@ -13,8 +13,8 @@
    <% UserInfo user=(UserInfo)session.getAttribute("user"); %>
   <section class="container">
     <div class="topup">
-      <h1>  韦厚舟<%;//=user.getUsername(); %></h1>
-      <h2>余额:<%;//=user.getMoney(); %></h2>
+      <h1> <%=user.getUsername() %></h1>
+      <h2>余额:<%=user.getMoney() %></h2>
      
       <form method="post" action="topup">
         <p><input type="number" min=0 name="topup" value="" placeholder="充值金额"></p>
