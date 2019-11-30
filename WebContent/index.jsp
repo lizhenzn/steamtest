@@ -93,14 +93,14 @@
 </head>
 <body>
 <div class="head">
-	<div style="position:absolute;left:50px;top:50px;">
+	<div style="position:absolute;left:425px;top:50px;">
 	<table width=600px>
 		<tr>
 			<td>
-				<a href="index.jsp">游戏商店</a>
+				<a href="index.jsp"><h2>游戏商店</h2></a>
 			</td>
 			<td>
-				<a href="GameRepertory.jsp">游戏库</a>
+				<a href="GameRepertory.jsp"><h2>游戏库</h2></a>
 			</td>
 		</tr>
 	</table>
@@ -113,30 +113,16 @@
 		<a href="RegisterPage.jsp">注册</a>
 	<% } else { %>
 	<% UserInfo user=(UserInfo)object;%>
-	用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="">充值</a>
+	<h3>用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="">充值</a></h3>
 	<%}%>
 </div>
-<h1 style="position:absolute; left:700px;top:100px;">游戏信息</h1>
+<h1 style="position:absolute; left:700px;top:100px;">游戏商店</h1>
 </div>
 
 <div class="wrap">
-	<div style="position:absolute;left:50px;top:0px;">
+	<div style="position:absolute;left:100px;top:0px;">
 	 
 	<table border=0 id="gameInfo" style="position:absolute;left:50px;">
-  	<tr>
-  		<td>
-  			<form method="POST">
-  				<input type="submit"  value="下一页">
-  				<input type="hidden" name="cmd" value="nextPage">
-  			</form>
-  		</td>
-  		<td>
-  			<form method="POST">
-  				<input type="submit"  value="上一页">
-  				<input type="hidden" name="cmd" value="lastPage">
-  			</form>
-  		</td>
-  	</tr>
   	<% %>
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
@@ -147,7 +133,18 @@
   	<%}%>
   	  			
   </table>
-</div>
+  
+	</div>
+	<div style="position:absolute;right:200px;top:0px;">
+  	<form method="POST">
+  				<input type="submit"  value="上一页" style="width:50px;height:250px">
+  				<input type="hidden" name="cmd" value="lastPage">
+  	</form>
+  	<form method="POST">
+  				<input type="submit"  value="下一页" style="width:50px;height:250px">
+  				<input type="hidden" name="cmd" value="nextPage">
+  	</form>
+  </div>
 </div>
 
 <%
