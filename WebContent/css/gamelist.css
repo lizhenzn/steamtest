@@ -2,9 +2,11 @@
 .gamelist{
 	width:47%;
 	height:700px;
-	margin-left:15%;
+ 	margin-left:15%; 
 	margin-right:10px;
 	float:left;
+	display:inline block;
+	background:#1b2838;
 }
 body{
 	position:relative;
@@ -20,20 +22,22 @@ body{
 	font-size:30px;
 	text-align:center;
 	padding:0px 30px;
-	line-height:180px;
+	line-height:140px;
 }
 .infoblock{
 	width:20%;
 	height:400px;
 	margin:10px;
-	float:left;
+	right:40px;
+	bottom:30px;
+	position:fixed;
 }
 .gameitem{
 	height:69px;
 	width:100%;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background: #1b2838;
+	background: #101b29;
 	display:block;
 	  text-size-adjust: none;
     -webkit-text-size-adjust: none;
@@ -64,7 +68,7 @@ body{
 	border:none;
 	height:100%;
 	display:inline block;
-	width:168px;
+	width:24%;
 	float:left;
 }
 .gameinfo{
@@ -89,7 +93,7 @@ body{
 	width:100%;
     white-space: normal;
     color:#ffffff;
-    overflow: auto;
+    overflow: hidden;
     font-size:12px;
     display: block;
     white-space: nowrap;

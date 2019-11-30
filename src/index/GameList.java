@@ -10,24 +10,34 @@ class GameItem{
 	public GameItem() {}
 }
 public class GameList {
-	private ArrayList<GameItem> game_list=new ArrayList<GameItem>();
-	private int page=0;
-	public void addItem(String img,String name) {
+	private  ArrayList<GameItem> game_list=new ArrayList<GameItem>();
+	private  int page=0;
+	public  void addItem(String img,String name) {
 		GameItem gameItem=new GameItem(img,name);
 		game_list.add(gameItem);
 	}
-	public GameItem getGameItem(int num) {
-		if(num+page*5>game_list.size())
+	public  GameItem getGameItem(int num) {
+		if(num+page*5 >= game_list.size())
 			return null;
 		return game_list.get(num+page*5);
 	}
-	public void nextPage() {
+	public  void nextPage() {
 		page++;
 	}
-	public String getImg(int num) {
-		return getGameItem(num+page*5).img;
+	public  void lastPage() {
+		if(page>0)
+			page--;
 	}
-	public String getName(int num) {
-		return getGameItem(num+page*5).name;
+	public  String getImg(int num) {
+		if(getGameItem(num)!=null)
+			return getGameItem(num).img;
+		else
+			return null;
+	}
+	public  String getName(int num) {
+		if(getGameItem(num)!=null)
+			return getGameItem(num).name;
+		else
+			return null;
 	}
 }
