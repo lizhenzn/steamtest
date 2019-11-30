@@ -5,6 +5,33 @@
 body{
 	position: relative;
 }
+.message{
+	width:86%;
+	text-align: center;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	background:#F7E16F;
+	border:1px solid black;
+	animation:message-box 0.7s;
+	animation-iteration-count:1;
+	animation-fill-mode:forwards;
+	animation-timing-function:ease-out;
+	/* Safari ºÍ Chrome */
+	-webkit-animation:message-box 0.7s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-timing-function:ease-out;
+}
+@-webkit-keyframes message-box{
+	from{height:0;}
+	to{height:30px;}
+}
+@keyframes message-box{
+	from{height:0;}
+	to{height:30px;}
+	}
+}
 .head .title {
 	font-family: "STSong";
 	color: #FFFFFF;

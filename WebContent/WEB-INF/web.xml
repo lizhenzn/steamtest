@@ -11,17 +11,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>fdsaf</display-name>
-    <servlet-name>fdsaf</servlet-name>
-    <servlet-class>aaaa.fdsaf</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>fdsaf</servlet-name>
-    <url-pattern>/fdsaf</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RequestServlet</display-name>
     <servlet-name>RequestServlet</servlet-name>
     <servlet-class>servlets.RequestServlet</servlet-class>
   </servlet>
@@ -49,4 +38,10 @@
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/IndexServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servlets.LoginServlet</servlet-class>
+  </servlet>
 </web-app>

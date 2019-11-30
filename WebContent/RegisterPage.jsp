@@ -5,7 +5,8 @@
 <html>
 <head>
 <title>欢迎来到Sbeam</title>
-<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/login.css" rel="stylesheet" type="text/css">
+
  <script type="text/javascript" src="js/register.js"></script>
  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 </head>
@@ -13,6 +14,7 @@
 <% 
 	UserInfo user=null;
 %>
+<div class="head"></div>
 <div class="content">
   <div class="login-wrap">
     <form id="user_login" action="">
@@ -28,5 +30,6 @@
     </form>
   </div>
 </div>
+<div ></div>
 </body>
 </html>

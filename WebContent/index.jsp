@@ -8,22 +8,59 @@
 <%@page import="java.util.*" %>
 <%@page import="utils.*" %>
 <%@page import="databeans.*" %>
-<% Connection conn; %>
-<% if((conn=DBCPManager.getConn())==null){ %>
-<% System.out.print("fail to connect dbcp\n"); %>
-<% }else { %>
-<%  System.out.print("connect to dbcp successfully\n");} %>
-<% GameList gameList=new GameList(); %>
-<%  ResultSet set= conn.createStatement().executeQuery("select * from game;"); %>
-<% while(set.next()){  %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% gameList.addItem("test.png",set.getString("name")); %>
-<% }%>
-<% conn.close(); %>
+<% 
+	GameList gameList=null;
+	if(request.getParameter("cmd")==null){
+		gameList=new GameList();
+		 Connection conn; 
+		 if((conn=DBCPManager.getConn())==null){
+		System.out.print("fail to connect dbcp\n");
+		}else { 
+		System.out.print("connect to dbcp successfully\n");} 
+		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
+		  while(set.next()){  
+		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem("test.png",set.getString("name")); 
+		 }
+		 session.setAttribute("GameList", gameList); 
+		 conn.close(); 
+	}
+	else if(request.getParameter("cmd").equals("nextPage") ){
+		System.out.print("enter nextPage\n");
+		gameList=(GameList)session.getAttribute("GameList");
+		gameList.nextPage();
+		session.setAttribute("GameList",gameList);
+	}
+	else if (request.getParameter("cmd").equals("lastPage") ){
+		System.out.print("enter lastPage\n");
+		gameList=(GameList)session.getAttribute("GameList");
+		gameList.lastPage();
+		session.setAttribute("GameList",gameList);
+	}
+	else{
+		System.out.print("fail to get cmd\n");
+		System.out.print("para="+request.getParameter("cmd")+"\n");
+	}
+	
+%>
+<%-- <% Connection conn; %> --%>
+<%-- <% if((conn=DBCPManager.getConn())==null){ %> --%>
+<%-- <% System.out.print("fail to connect dbcp\n"); %> --%>
+<%-- <% }else { %> --%>
+<%-- <%  System.out.print("connect to dbcp successfully\n");} %> --%>
+<%-- <%  ResultSet set= conn.createStatement().executeQuery("select * from game;"); %> --%>
+<%-- <% while(set.next()){  %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% gameList.addItem("test.png",set.getString("name")); %> --%>
+<%-- <% conn.close(); %> --%>
 
 
 <!DOCTYPE html>
@@ -32,25 +69,25 @@
 <meta charset="ISO-8859-1">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.4.1.js"></script>
-<script>
-	function nextPage(){
-		<% System.out.print("enter nextPage\n");%>
-		<% gameList.nextPage(); %>
-		var str =""
-		<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>"
-			str+='<tr>'
-				str+='<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>'
-				str+='<td><%= gameList.getName(i) %></td>'  		
-			str+='</tr>'
-		<%}%>"
-	$("#gameInfo").html(str)	
-	}
-	function lastPage(){
-		<% gameList.lastPage(); %>
-		var str =""
+<script type="text/javascript">
+// 	function nextPage(){
+// 		$.ajax({
+// 			url:"http://localhost:8080/SteamSimulator/IndexServlet",
+// 			type:"POST",
+//  			data:{"cmd":"nextPage"},
+//  			dataType:"text",
+// 			success:function(data){
+// 				alert("succcess!");
+// 			},
+// 			error : function(data){
+// 		        alert("网络错误，请稍后重试！");
+// 		      }
+// 		});
+		
+// 	}
+// 	function lastPage(){
 
-	$("#gameInfo").html(str)
-	}
+// 	}
 </script>
 <title>游戏商店</title>
 </head>
@@ -88,16 +125,19 @@
 	<table border=0 id="gameInfo" style="position:absolute;left:50px;">
   	<tr>
   		<td>
-  			<form>
-  				<input type="button" value="下一页">	
+  			<form method="POST">
+  				<input type="submit"  value="下一页">
+  				<input type="hidden" name="cmd" value="nextPage">
   			</form>
   		</td>
   		<td>
-  			<button onclick="lastPage()">
-  				上一页
-  			</button>
+  			<form method="POST">
+  				<input type="submit"  value="上一页">
+  				<input type="hidden" name="cmd" value="lastPage">
+  			</form>
   		</td>
   	</tr>
+  	<% %>
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
   			<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>

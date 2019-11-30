@@ -4,7 +4,8 @@
 <html>
 <head>
 <link href="css/login.css" rel="stylesheet" type="text/css">
-
+<script type="text/javascript" src="js/register.js"></script>
+ <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <meta charset="UTF-8">
 <title>login</title>
 </head>
@@ -15,12 +16,16 @@
 	
 <div class="wrap">
 	<div class="content">Steam Simulator 您的游戏专属平台</div>
-	<div class="login_frame">
+	<div class="login_frame" id="login_register">
+		<form action="LoginServlet" method="GET">
+		<div class="login_frame">
 		<p class="login_tip">登录</p>
 		<input type="text" placeholder="请输入用户名" id='user'>
 		<input type="password" placeholder="请输入密码" id='psw'>
 		<input type="button" onclick="login()" value="登录" style="background-color: turquoise;">
-		<a href=''>点击注册</a>
+		<button onclick="onRegister()">点击注册</button>
+		</div>
+		</form>
 	</div>
 </div>
  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
