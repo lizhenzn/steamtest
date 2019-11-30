@@ -19,7 +19,12 @@
 		System.out.print("connect to dbcp successfully\n");} 
 		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
 		  while(set.next()){  
-		
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
 		 }
 		 session.setAttribute("GameList", gameList); 
 		 conn.close(); 
@@ -128,7 +133,7 @@
   	<% %>
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
-  			<td><a href="PresentGame.jsp" onclick=""><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
+  			<td><a href="detail.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
   			<td><%= gameList.getName(i) %></td>  		
   	</tr>
   	
@@ -138,13 +143,12 @@
   
 	</div>
 	<div style="position:absolute;right:200px;top:0px;">
-
-  	<form method="POST">
-  				<input type="submit"  value="上一页" style="width:50px;height:250px">
+  	<form  method="POST">
+  				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="lastPage">
   	</form>
-  	<form method="POST">
-  				<input type="submit"  value="下一页" style="width:50px;height:250px">
+  	<form  method="POST">
+  				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="nextPage">
   	</form>
   </div>
