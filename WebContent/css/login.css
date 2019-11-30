@@ -4,6 +4,7 @@
 }
 body{
 	position: relative;
+    
 }
 .message{
 	width:86%;
@@ -13,12 +14,12 @@ body{
 	margin-right:auto;
 	background:#F7E16F;
 	border:1px solid black;
-	animation:message-box 0.7s;
+	animation:message-box 0.3s;
 	animation-iteration-count:1;
 	animation-fill-mode:forwards;
 	animation-timing-function:ease-out;
 	/* Safari 和 Chrome */
-	-webkit-animation:message-box 0.7s;
+	-webkit-animation:message-box 0.3s;
 	-webkit-animation-iteration-count:1;
 	-webkit-animation-fill-mode:forwards;
 	-webkit-animation-timing-function:ease-out;
@@ -58,6 +59,7 @@ body{
 	background-image: url(4.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	display:block;
 }
 
 .foot {
@@ -65,7 +67,8 @@ body{
 	height: 100px;
 	bottom:0;
 	background-color: rgb(13, 26, 61);
-	position: absolute;
+	position: relative;
+	display:block;
 }
 .wrap .login_frame {
 	box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 

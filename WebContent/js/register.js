@@ -26,7 +26,7 @@ function check(form){
     return false;
   }
   if(password&&password.length<6){
-	  showMsg("请输入密码");
+	  showMsg("密码长度须不少于6位");
 	  form.password.focus();
 	  return false;
   }
@@ -76,7 +76,7 @@ function showMsg(msg){
 
 function onRegister(){
 	var htmlcontent=" <form id='user_login' action=‘’>" +
-      "<p class='login_tip'>欢迎加入 Steam(Simulator)</p>"+
+      "<p style='font-size:25px' class='login_tip'>欢迎加入 Steam(Simulator)</p>"+
       "<input class='name' name='' id='userEmail' type='email' placeholder='请输入邮箱'>"+
      "<input class='name' name='' id='accountName' type='text' placeholder='请输入用户名'>"+
       "<input class='code' name='password' id='password' type='password' placeholder='请输入密码'>"+

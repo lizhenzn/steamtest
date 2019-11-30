@@ -13,8 +13,10 @@
 <head>
 <title>我的游戏库</title>
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="css/gamelist.css" rel="stylesheet" type="text/css">
 </head>
 <%
+		String hostUrl="http:localhost:8080/SteamSimulator/";
  		ArrayList<GameInfo> gameRepo=null;
  		UserInfo user=null;
  		int count=0;
@@ -59,33 +61,45 @@
  	%>
 <body>
  	<div class="head">
- 	<%if(user!=null){ %><div class="title">欢迎您:<%=user.getUsername()%></div><%} %>
+ 	<%if(user!=null){ %><div class="userwelcome">欢迎您:<%=user.getUsername()%></div><%} %>
  	</div>
  	<div class="wrap">
- 	<div id="message"></div>
- 	<table>
- 	<%if(gameRepo!=null)for(int i=10*(index-1);i<gameRepo.size()&&i<index*10;i++){%>
- 	<tr><td>
- 	 <form method="post">
- 	 <img  src="<%= gameRepo.get(i).getImg1()%>"/>
- 	<input type="hidden" name="rscPath" value="<%= gameRepo.get(i).getRsc()%>"/>
- 	<input type="submit" value="开始游戏"/>
- 	</form> 
- 	</td></tr>
- 	<%} %>
- 	</table>
- 	<div class="turnpage">
- 	<form method="GET">
- 		<input class="pagebutton" type="submit" <%if(index-1<1)out.print("disabled='disabled'"); %> value="< 上一页">
- 		<input type="hidden" name="index"  value="<%=index-1 %>">
- 	</form>
- 	<form method="GET">
- 		<input class="pagebutton" type="submit" <%if(index+1>pages)out.print("disabled='disabled'"); %>value="下一页 >">
- 		<input type="hidden" name="index"  value="<%=index+1 %>">
- 	</form>
+ 	<div class="gamelist" >
+	 	<%if(gameRepo!=null)for(int i=10*(index-1);i<gameRepo.size()&&i<index*10;i++){%>
+	 		<a class="gameitem"   href="<%=hostUrl+"gamePlay?offset="+i %>">
+		 		<img  class="gameimg"  src="<%= gameRepo.get(i).getImg1()%>"/>
+		 		<div class="gameinfo">
+		 			<div class="gametitle"><%=gameRepo.get(i).getName() %></div>
+		 			<div class="extrainfo"><p>额外信息</p><p>额外信息</p><p>额外信息</p></div>
+		 		</div>
+		 		<div class="gamemethod">
+		 			<!-- <div class="gameprice discount">40.00</div>
+		 			<div class="gameprice priceshow"><p>30.00</p><p>(优惠 25%！)</p></div> -->
+		 			<div class="gameprice discount"></div>
+		 			<div class="gameprice priceshow">点击游玩</div>
+		 		</div>
+	 		</a>
+	 	<%} %>
+	 	<div class="paging">
+ 		<div>
+		 	<form method="GET">
+		 		<input class="paging-content pagebtn" type="submit" <%if(index-1<1)out.print("disabled='disabled'"); %> value="< 上一页">
+		 		<input  type="hidden" name="index"  value="<%=index-1 %>">
+		 	</form>
+ 		</div>
+ 		<div>
+		 	<form method="GET">
+		 		<input class="paging-content pagebtn" type="submit" <%if(index+1>pages)out.print("disabled='disabled'"); %>value="下一页 >">
+		 		<input type="hidden" name="index"  value="<%=index+1 %>">
+		 	</form>
+ 		</div>
  	</div>
+ 	</div>
+ 	<div class="infoblock"> 这是信息框 </div>
+ 	
  	</div>
  	
- 	<div class="foot"></div>
+ 	<div class="foot" ></div>
+ 	
 </body>
 </html>

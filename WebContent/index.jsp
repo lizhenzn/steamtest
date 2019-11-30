@@ -6,6 +6,7 @@
 
 <%@page import="index.*" %>
 <%@page import="java.util.*" %>
+<%@page import="databeans.UserInfo" %>
 
 <% GameList gameList=new GameList(); %>
 <% gameList.addItem("test.png","name1");%>
@@ -23,7 +24,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<script src="jquery-3.4.1.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script>
 	function nextPage(){
 		var str =""
@@ -40,7 +41,7 @@
 </head>
 <body>
 <div style="position:absolute;left:50px;top:50px;">
-	<table width=600px>
+	<table width="600px">
 		<tr>
 			<td>
 				<a href="index.jsp">游戏商店</a>
@@ -54,12 +55,14 @@
 		</tr>
 	</table>
 </div>
+<%UserInfo user=(UserInfo) session.getAttribute("user"); 
+if(user!=null){%>
 <div style="position:absolute;right:50px;top:10px;">
-	用户名：... 账户余额：...
+	用户名: <%=user.getUsername() %>      账户余额: <%=user.getMoney() %>
 </div>
-
+<%} %>
 <div style="position:absolute;left:50px;top:100px;">
-	<table border=0 id="gameInfo">
+	<table id="gameInfo">
   	<caption>游戏信息</caption>
   	<tr>
   		<td>
