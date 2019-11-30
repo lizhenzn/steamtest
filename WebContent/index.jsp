@@ -19,12 +19,12 @@
 		System.out.print("connect to dbcp successfully\n");} 
 		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
 		  while(set.next()){  
-		  gameList.addItem("test.png",set.getString("name")); 
-		  gameList.addItem("test.png",set.getString("name")); 
-		  gameList.addItem("test.png",set.getString("name")); 
-		  gameList.addItem("test.png",set.getString("name")); 
-		  gameList.addItem("test.png",set.getString("name")); 
-		  gameList.addItem("test.png",set.getString("name")); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
+		  gameList.addItem(new GameInfo(set)); 
 		 }
 		 session.setAttribute("GameList", gameList); 
 		 conn.close(); 
@@ -70,25 +70,32 @@
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.4.1.js"></script>
 <script type="text/javascript">
-// 	function nextPage(){
-// 		$.ajax({
-// 			url:"http://localhost:8080/SteamSimulator/IndexServlet",
-// 			type:"POST",
-//  			data:{"cmd":"nextPage"},
-//  			dataType:"text",
-// 			success:function(data){
-// 				alert("succcess!");
-// 			},
-// 			error : function(data){
-// 		        alert("网络错误，请稍后重试！");
-// 		      }
-// 		});
+	function transGameInfo(index){
+		$.ajax({
+			url:"http://localhost:8080/SteamSimulator/IndexServlet",
+			type:"POST",
+ 			data:{"cmd":"transGameInfo","index":index},
+ 			dataType:"text",
+			success:function(data){
+				alert("succcess!");
+			},
+			error : function(data){
+		        alert("网络错误，请稍后重试！");
+		      }
+		});
 		
-// 	}
-// 	function lastPage(){
-
-// 	}
+	}
 </script>
+<style type="text/css">
+	.changePage {
+    background-color: #f1f1f1;
+    color: black;
+}
+.changePage:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 <title>游戏商店</title>
 </head>
 <body>
@@ -126,7 +133,7 @@
   	<% %>
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
-  			<td><a href="PresentGame.jsp"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
+  			<td><a href="PresentGame.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
   			<td><%= gameList.getName(i) %></td>  		
   	</tr>
   	
@@ -136,12 +143,12 @@
   
 	</div>
 	<div style="position:absolute;right:200px;top:0px;">
-  	<form method="POST">
-  				<input type="submit"  value="上一页" style="width:50px;height:250px">
+  	<form  method="POST">
+  				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="lastPage">
   	</form>
-  	<form method="POST">
-  				<input type="submit"  value="下一页" style="width:50px;height:250px">
+  	<form  method="POST">
+  				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="nextPage">
   	</form>
   </div>
