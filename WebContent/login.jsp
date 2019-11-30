@@ -46,8 +46,8 @@ var psw=document.getElementById('psw');
 			user:user.value,
 			psw:psw.value
 	}
-	var systemURL="http://localhost:8080/SteamSimulator/LoginServlet";
-	var indexUrl="http://localhost:8080/SteamSimulator/index.jsp";
+	var systemURL="http://localhost:8888/SteamSimulator/LoginServlet";
+	var indexUrl="http://localhost:8888/SteamSimulator/index.jsp";
 
 
 	//AJAX向后台发送用户名和密码

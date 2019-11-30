@@ -2,8 +2,8 @@
  * 
  */
 //验证表单是否为空，若为空则将焦点聚焦在input表单上，否则表单通过，登录成功
-var systemURL="http://localhost:8080/SteamSimulator/register";
-var loginUrl="http://localhost:8080/SteamSimulator/login.jsp";
+var systemURL="http://localhost:8888/SteamSimulator/register";
+var loginUrl="http://localhost:8888/SteamSimulator/login.jsp";
 function check(form){
   var accountName = $("#accountName"),password = $("#password"),userEmail=$("#userEmail");
   var accountName = accountName.val(),password = password.val(),userEmail=userEmail.val();

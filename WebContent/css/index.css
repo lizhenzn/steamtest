@@ -1,0 +1,132 @@
+.total_images {
+	margin: 0px auto;
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: bold;
+	letter-spacing: 1.4px;
+}
+.total_images .eachs {
+	position:absolute
+}
+#link1 {
+	top:200px;
+	left:100px;
+}
+#link2 {
+	top:200px;
+	left:220px;
+}
+#link3 {
+	top:200px;
+	left:348px;
+}
+#link4 {
+	top:200px;
+	left:448px;
+}
+#link5 {
+	top:200px;
+	left:567px;
+}
+.eachs img.images {
+	width:230px;
+	height:390px;
+	opacity:1;
+	display:none
+}
+.eachs h2 {
+	position:absolute;
+	width:147px;
+	height:52px;
+	color:#222;
+	font-size:18px;
+	top:0px;
+	left:52px;
+	text-indent:10px;
+	line-height:52px;
+	text-shadow:1px 1px 1px #fff;
+	text-transform:uppercase;
+}
+.eachs h2.active {
+	color:#fff;
+	text-shadow:1px 0px 1px #555;
+}
+a.hovered {
+	color:#fff;
+	height:22px;
+	display:block;
+	padding:8px;
+	-moz-border-radius: 5px;
+	text-shadow: 0px 2px 6px #A81C1F;
+	background-color:#0099CC;
+	text-decoration:none;
+	-webkit-border-radius: 5px;
+}
+a.menu {
+	color:#fff;
+	height:22px;
+	display:block;
+	padding:8px;
+	-moz-border-radius: 5px;
+	background-color:#DB2D39;
+	color:#FFFFFF;
+	text-decoration:none;
+	-webkit-border-radius: 5px;
+}
+h1 {
+	font: bold 50px/50px Helvetica, Arial, Sans-serif;
+	text-align: center;
+	color: #eee;
+	text-shadow: 0px 2px 6px #333;
+}
+.total_images .eachs a.menu:hover {
+	color:#fff;
+	-moz-border-radius: 5px;
+	text-shadow: 0px 2px 6px #A81C1F;
+	background-color:#A81C1F;
+	-webkit-border-radius: 5px;
+}
+
+.eachs {
+	width:105px;
+	text-align:center;
+	font: bold 20px/20px Helvetica, Arial, Sans-serif;
+	text-align: center;
+	color: #eee;
+	text-shadow: 0px 2px 6px #333;
+}
+.eachs div {
+	list-style:none;
+	position:absolute;
+	width:110px;
+	left:10px;
+	top:55px;
+	font-size:20px;
+	color:#fff;
+	text-align:center;
+	display:none;
+}
+.eachs div ul {
+	margin:14px;
+	padding:0px 0px 0px 0px;
+	list-style-type:none;
+}
+.eachs div li {
+	width:160px;
+}
+.eachs div li a {
+	font-size:12px;
+	width:160px;
+	padding-top:15px;
+	vertical-align:bottom;
+	display:block;
+}
+.eachs div li a:hover {
+	color:#FF0000
+}
+.eachs div a {
+	text-decoration:none;
+	text-transform:uppercase;
+	color:#fff;
+}

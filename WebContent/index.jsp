@@ -133,7 +133,7 @@
   	<% %>
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
   	<tr>
-  			<td><a href="PresentGame.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
+  			<td><a href="detail.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
   			<td><%= gameList.getName(i) %></td>  		
   	</tr>
   	
