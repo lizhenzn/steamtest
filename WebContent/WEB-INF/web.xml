@@ -46,7 +46,7 @@
   </servlet>
   <servlet>
     <description></description>
-<<<<<<< HEAD
+
     <display-name>Detail</display-name>
     <servlet-name>Detail</servlet-name>
     <servlet-class>servlets.Detail</servlet-class>
@@ -55,10 +55,16 @@
     <servlet-name>Detail</servlet-name>
     <url-pattern>/Detail</url-pattern>
   </servlet-mapping>
-=======
+
+  <servlet>
+    <description></description>
     <display-name>topup</display-name>
     <servlet-name>topup</servlet-name>
     <servlet-class>servlets.topup</servlet-class>
   </servlet>
->>>>>>> branch 'master' of https://github.com/lizhenzn/steamtest.git
+  <servlet-mapping>
+    <servlet-name>topup</servlet-name>
+    <url-pattern>/topup</url-pattern>
+  </servlet-mapping>
+
 </web-app>
