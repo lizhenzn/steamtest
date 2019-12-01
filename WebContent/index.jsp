@@ -125,7 +125,7 @@
 			 		<img  class="gameimg"  src="<%= gameList.getGameItem(i).getImg1()%>"/>
 			 		<div class="gameinfo">
 			 			<div class="gametitle"><%=gameList.getGameItem(i).getName() %></div>
-<%-- 			 			<div class="extrainfo"><p><%=gameList.getIntro(i) %></p></div> --%>
+			 			<div class="extrainfo"><p><%=gameList.getGameItem(i).getIntro() %></p></div>
 			 		</div>
 			 		<div class="gamemethod">
 			 			<% int discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
