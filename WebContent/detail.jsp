@@ -17,9 +17,10 @@
 <li><a href="login.jsp">退出</a></li>
 <li><a href="topup.jsp">充值</a></li>
 <li><a href="index.jsp">游戏商城</a></li>
-<li><a href="#">Link four</a></li>
+<li><a href="GameRepertory.jsp">我的游戏库</a></li>
 </ul>
 <%GameInfo gameInfo=(GameInfo)session.getAttribute("GameInfo"); %>
+<% if(gameInfo==null) System.out.println(" game  null"); %>
 <div style="width:733px; height:320px; margin:0 auto;">
 <div class="wrap"> 
 		<a  href="Detail"> 
@@ -34,7 +35,7 @@
 <div class="wrap" > 
            <a href="Detail" > 
            <img src=<%=gameInfo.getImg2()%>  alt='' />
-           <p> <b><%=gameInfo.getPrice() %></b> 
+           <p> <b>价格:<%=gameInfo.getPrice() %></b> 
            <span><%=gameInfo.getIntro() %><br /><br />
                                 
             </span> </p>
@@ -42,7 +43,7 @@
 </div>
 <!-- end wrap -->
 <div class="wrap"> <a href="Detail"> <img src=<%=gameInfo.getImg3()%> alt='' />
-  <p> <b><%=gameInfo.getDiscount()%></b> <span><%=gameInfo.getIntro() %><br />
+  <p> <b>折扣：<%=gameInfo.getDiscount()%></b> <span><%=gameInfo.getIntro() %><br />
     <br />
      </span> </p>
   </a> </div>
