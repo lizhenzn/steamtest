@@ -5,8 +5,15 @@
 <head>
 <title>PlayGame</title>
 <link href="css/login.css" rel="stylesheet" type="text/css">
-<link href="css/stars.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-3.4.1.min.js"></script>
+<style>
+.gameframe{
+	width:90%;
+	height:89%;
+	left:5%;
+	position:relative;
+}
+</style>
 </head>
 <body>
 <div class="head">
@@ -18,10 +25,7 @@
 	</div>
 </div>
 <div class="wrap">
-	<canvas></canvas>
- 	<script type="text/javascript" src="js/stars.js"></script>
-<embed src="http://cdn.comment.4399pk.com/control/A4399dv_base_u3d.swf?20191009" >
-
+<embed class="gameframe" src="">
 </div>
 	<div class="foot"></div>
 </body>

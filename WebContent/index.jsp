@@ -63,8 +63,9 @@
 <head>
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <link href="css/stars.css" rel="stylesheet" type="text/css">
+<link href="css/pagingArrow.css" rel="stylesheet" type="text/css">
 <link href="css/gamelist.css" rel="stylesheet" type="text/css">
-<script src="jquery-3.4.1.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	function transGameInfo(index){
 		$.ajax({
@@ -79,7 +80,10 @@
 		        alert("网络错误，请稍后重试！");
 		      }
 		});
-		
+	}
+	function jumpWithCmd(cmd){
+		console.log("/index.jsp?cmd="+cmd);
+		window.location.assign("index.jsp?cmd="+cmd);
 	}
 </script>
 <style type="text/css">
@@ -116,8 +120,11 @@
 </div>
 
 <div class="wrap">
+
 <canvas></canvas>
  	<script type="text/javascript" src="js/stars.js"></script>	
+ 	<div class=" arrow left" onclick="jumpWithCmd('lastPage')"><div></div></div>
+<div class=" arrow right" onclick="jumpWithCmd('nextPage')"><div></div></div>
   	<div class="gamelist" >
   	<% for(int i=0;(gameList.getImg(i)!=null)&&i<8;i++){%> 
   	 	
@@ -128,7 +135,9 @@
 			 			<div class="extrainfo"><p><%=gameList.getGameItem(i).getIntro() %></p></div>
 			 		</div>
 			 		<div class="gamemethod">
-			 			<% int discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
+			 			<% int discount=0;
+			 			if(gameList.getGameItem(i).getDiscount()!=null)
+			 			discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
 			 			<% if (discount!=0) {%>
  			 			<div class="gameprice discount"><%=gameList.getGameItem(i).getPrice() %></div>
  			 			<div class="gameprice priceshow"><p><%=(gameList.getGameItem(i).getPrice())*(1-(float)discount/100) %></p>
@@ -140,20 +149,9 @@
  			 			</div>
 			 		</div>
 		 		</a>			
-  	
   	<%}%>
   	</div>
-  	  			
-	<div style="position:absolute;right:200px;top:0px;">
-  	<form  method="POST">
-  				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
-  				<input type="hidden" name="cmd" value="lastPage">
-  	</form>
-  	<form method="POST">
-  				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
-  				<input type="hidden" name="cmd" value="nextPage">
-  	</form>
-  </div>
+  <div class="infoblock"> <img src="assets/forge.gif" width="256px" height="256px"/> </div>
 </div>
 <div class="foot"></div>
 <%
