@@ -1,5 +1,6 @@
 package servlets;
 
+import index.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,12 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.print("enter IndexServlet\n");
+		if(request.getParameter("cmd").equals("transGameInfo")) {
+			int index=Integer.parseInt(request.getParameter("index"));
+			GameList gameList=(GameList)request.getSession().getAttribute("GameList");
+			request.getSession().setAttribute("GameInfo", gameList.getGameItem(index));
+			System.out.print("index ="+index+"\n");
+		}
 		response.getWriter().print("12345");
 	}
 
