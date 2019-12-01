@@ -20,11 +20,6 @@
 		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
 		  while(set.next()){  
 		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
 		 }
 		 session.setAttribute("GameList", gameList); 
 		 conn.close(); 
@@ -68,6 +63,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="css/stars.css" rel="stylesheet" type="text/css">
+<link href="css/gamelist.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	function transGameInfo(index){
@@ -126,21 +123,33 @@
 </div>
 
 <div class="wrap">
-	<div style="position:absolute;left:100px;top:0px;">
-	 
-	<table border=0 id="gameInfo" style="position:absolute;left:50px;">
-  	<% %>
-  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
-  	<tr>
-  			<td><a href="detail.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
-  			<td><%= gameList.getName(i) %></td>  		
-  	</tr>
+
+  	<div class="gamelist" >
+  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%> 
+  	 	
+  			<a class="gameitem"  href="detail.jsp" onclick="transGameInfo(<%=i %>)">
+			 		<img  class="gameimg"  src="<%= gameList.getGameItem(i).getImg1()%>"/>
+			 		<div class="gameinfo">
+			 			<div class="gametitle"><%=gameList.getGameItem(i).getName() %></div>
+<%-- 			 			<div class="extrainfo"><p><%=gameList.getIntro(i) %></p></div> --%>
+			 		</div>
+			 		<div class="gamemethod">
+			 			<% int discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
+			 			<% if (discount!=0) {%>
+ 			 			<div class="gameprice discount"><%=gameList.getGameItem(i).getPrice() %></div>
+ 			 			<div class="gameprice priceshow"><p><%=(gameList.getGameItem(i).getPrice())*(1-(float)discount/100) %></p>
+ 			 			<p>(优惠 <%=discount %>%！)</p>
+ 			 			<%} else { %>
+ 			 			<div class="gameprice discount"></div>
+ 			 			<div class="gameprice priceshow"><p><%=gameList.getGameItem(i).getPrice() %></p>
+ 			 			<%} %>	 			
+ 			 			</div>
+			 		</div>
+		 		</a>			
   	
   	<%}%>
+  	</div>
   	  			
-  </table>
-  
-	</div>
 	<div style="position:absolute;right:200px;top:0px;">
   	<form  method="POST">
   				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
