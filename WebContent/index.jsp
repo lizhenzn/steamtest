@@ -72,7 +72,7 @@ else
 <script type="text/javascript">
 	function transGameInfo(index){
 		$.ajax({
-			url:"http://localhost:8080/SteamSimulator/IndexServlet",
+			url:"http://localhost:8888/SteamSimulator/IndexServlet",
 			type:"POST",
  			data:{"cmd":"transGameInfo","index":index},
  			dataType:"text",
