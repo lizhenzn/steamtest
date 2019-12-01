@@ -56,11 +56,4 @@
     <url-pattern>/Detail</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <description></description>
-    <display-name>topup</display-name>
-    <servlet-name>topup</servlet-name>
-    <servlet-class>servlets.topup</servlet-class>
-  </servlet>
-
 </web-app>
