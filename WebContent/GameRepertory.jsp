@@ -17,7 +17,6 @@
 <link href="css/gamelist.css" rel="stylesheet" type="text/css">
 </head>
 <%
-		String hostUrl="http:localhost:8080/SteamSimulator/";
  		ArrayList<GameInfo> gameRepo=null;
  		UserInfo user=null;
  		int count=0;
@@ -27,7 +26,7 @@
  		else index=1;
  		user=(UserInfo)session.getAttribute("user");
  	if(user!=null){
- 		gameRepo=(ArrayList<GameInfo>)session.getAttribute("gamerepo");
+ 		gameRepo=(ArrayList<GameInfo>)session.getAttribute("gamerepe");
 		 	if(gameRepo==null){//获取实例
 		 		Connection conn=DBCPManager.getConn();
 		 			if(conn!=null){
@@ -38,8 +37,8 @@
 		
 		 				ResultSet rs=ps.executeQuery();
 		 				while(rs.next()){gameRepo.add(new GameInfo(rs));}
-		 				session.setAttribute("gamerepo",gameRepo);
-		 				System.out.println("get repo");
+		 				session.setAttribute("gamerepe",gameRepo);
+		 				System.out.println("get repe");
 		 				conn.close();
 		 			}
 	 		}
@@ -65,19 +64,24 @@
 <body>
 	
  	<div class="head">
- 	
+ 	<img 
+ 	id="mainicon" src="assets/globalheader_logo.png" ></img>
+ 	<div class="title">Simulator</div>
+ 	<div class="guidediv" style="position:absolute;left:45%;top:6%;">
+				<a href="index.jsp">游戏商店</a>
+				<a href="GameRepertory.jsp">游戏库</a>
+	</div>
  	<%if(user!=null){ %><div class="userwelcome">欢迎您:<%=user.getUsername()%></div><%} %>
  	</div>
  	
  	<div class="wrap">
  	<canvas></canvas>
  	<script type="text/javascript" src="js/stars.js"></script>
- 	<!-- <canvas></canvas>
- 	<script type="text/javascript" src="js/stars.js"></script> -->
+ 	
 		
 	 	<div class="gamelist" >
 		 	<%if(gameRepo!=null)for(int i=10*(index-1);i<gameRepo.size()&&i<index*10;i++){%>
-		 		<a class="gameitem"   href="<%=hostUrl+"gamePlay?offset="+i %>">
+		 		<a class="gameitem"   href=<%= "PlayGame.jsp?offset="+i %>">
 			 		<img  class="gameimg"  src="<%= gameRepo.get(i).getImg1()%>"/>
 			 		<div class="gameinfo">
 			 			<div class="gametitle"><%=gameRepo.get(i).getName() %></div>

@@ -21,16 +21,16 @@ body{
 	width:300px;
 	font-size:30px;
 	text-align:center;
-	padding:0px 30px;
+	padding-right:40px;
 	line-height:140px;
 }
 .infoblock{
-	width:20%;
-	height:400px;
-	margin:10px;
+	width:100px;
+	height:100px;
 	right:40px;
-	bottom:30px;
+	bottom:100px;
 	position:fixed;
+	background:#00ffff;
 }
 .gameitem{
 	height:69px;

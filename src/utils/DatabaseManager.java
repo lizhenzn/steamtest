@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 public class DatabaseManager {
-private static String  URL="jdbc:mysql://localhost:3306/steam?serverTimezone=GMT&useUnicode=true";
+private static String  URL="jdbc:mysql://localhost:3306/steam?useUnicode=true";
 private static String  USER="root";
-private static String  PSW="123456";
+private static String  PSW="010233";
 private static Connection connection=null;
 
 public static  void createConnection()
@@ -84,5 +84,4 @@ set character_set_client=gbk;
 set character_set_connection=utf8;
 set character_set_results=gbk;
 */
-
 

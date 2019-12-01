@@ -44,4 +44,10 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>topup</display-name>
+    <servlet-name>topup</servlet-name>
+    <servlet-class>servlets.topup</servlet-class>
+  </servlet>
 </web-app>
