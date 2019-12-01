@@ -23,7 +23,9 @@
 <div class="wrap">
 <canvas></canvas>
  	<script type="text/javascript" src="js/stars.js"></script>
-	<div class="content">Steam Simulator 您的游戏专属平台</div>
+	<div class="content"><p>Steam Simulator </p><p>您的游戏专属平台</p>
+	<img src="assets/star.gif" />
+	</div>
 	
 	<div class="login_frame" id="login_register">
 		<form action="LoginServlet" method="GET">
