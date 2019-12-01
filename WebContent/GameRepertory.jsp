@@ -81,7 +81,7 @@
 		
 	 	<div class="gamelist" >
 		 	<%if(gameRepo!=null)for(int i=10*(index-1);i<gameRepo.size()&&i<index*10;i++){%>
-		 		<a class="gameitem"   href=<%= "PlayGame.jsp?offset="+i %>">
+		 		<a class="gameitem"   href= "PlayGame.jsp?offset=<%=i%>">
 			 		<img  class="gameimg"  src="<%= gameRepo.get(i).getImg1()%>"/>
 			 		<div class="gameinfo">
 			 			<div class="gametitle"><%=gameRepo.get(i).getName() %></div>

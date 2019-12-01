@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;"
     pageEncoding="UTF-8"%>
+<%@page import="databeans.*" %> 
+<%@page import="java.util.ArrayList" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +27,13 @@
 	</div>
 </div>
 <div class="wrap">
-<embed class="gameframe" src="">
+<%
+	int offset=Integer.parseInt(request.getParameter("offset"));
+	ArrayList<GameInfo> gameList=(ArrayList<GameInfo>)session.getAttribute("gamerepe");
+	GameInfo gameInfo=gameList.get(offset);
+	System.out.print(gameInfo.getRsc()+"\n");
+%>
+<embed class="gameframe" src="<%=gameInfo.getRsc()%>">
 </div>
 	<div class="foot"></div>
 </body>

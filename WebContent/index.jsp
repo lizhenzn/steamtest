@@ -72,7 +72,7 @@ else
 <script type="text/javascript">
 	function transGameInfo(index){
 		$.ajax({
-			url:"http://localhost:8888/SteamSimulator/IndexServlet",
+			url:"http://localhost:8080/SteamSimulator/IndexServlet",
 			type:"POST",
  			data:{"cmd":"transGameInfo","index":index},
  			dataType:"text",
@@ -142,12 +142,12 @@ else
 			 			if(gameList.getGameItem(i).getDiscount()!=null)
 			 			discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
 			 			<% if (discount!=0) {%>
- 			 			<div class="gameprice discount"><%=gameList.getGameItem(i).getPrice() %></div>
- 			 			<div class="gameprice priceshow"><p><%=(gameList.getGameItem(i).getPrice())*(1-(float)discount/100) %></p>
+ 			 			<div class="gameprice discount"><%=(int)gameList.getGameItem(i).getPrice() %></div>
+ 			 			<div class="gameprice priceshow"><p><%=(int)((gameList.getGameItem(i).getPrice())*(1-(float)discount/100)) %></p>
  			 			<p>(优惠 <%=discount %>%！)</p>
  			 			<%} else { %>
  			 			<div class="gameprice discount"></div>
- 			 			<div class="gameprice priceshow"><p><%=gameList.getGameItem(i).getPrice() %></p>
+ 			 			<div class="gameprice priceshow"><p><%=(int)gameList.getGameItem(i).getPrice() %></p>
  			 			<%} %>	 			
  			 			</div>
 			 		</div>
