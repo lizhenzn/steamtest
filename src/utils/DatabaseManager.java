@@ -7,7 +7,7 @@ import java.sql.Connection;
 public class DatabaseManager {
 private static String  URL="jdbc:mysql://localhost:3306/steam?characterEncoding=utf-8&useUnicode=true&serverTimezone=GMT";
 private static String  USER="root";
-private static String  PSW="root";
+private static String  PSW="123456";
 private static Connection connection=null;
 
 public static  void createConnection()

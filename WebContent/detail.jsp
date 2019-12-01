@@ -23,7 +23,7 @@
 <div style="width:733px; height:320px; margin:0 auto;">
 <div class="wrap"> 
 		<a  href="Detail"> 
-     	<img src=<%=gameInfo.getImg1()%> style="width:980;height=51" alt='' />
+     	<img src="<%=gameInfo.getImg1()%>" style="width:980;height=51" alt='' />
       			<p> <b><%=gameInfo.getName() %></b> <span><%=gameInfo.getIntro() %><br /> <br />
          			 
           		 </span>
