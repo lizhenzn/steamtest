@@ -18,13 +18,13 @@ import utils.DatabaseManager;
  * Servlet implementation class topup
  */
 @WebServlet("/topup")
-public class topup extends HttpServlet {
+public class Topup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public topup() {
+    public Topup() {
         super();
         // TODO Auto-generated constructor stub
     }

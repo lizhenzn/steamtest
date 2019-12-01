@@ -27,7 +27,7 @@ public class RecordInfo implements Serializable {
     private String status;
     private Timestamp timestamp;
     private float price;
-
+    
     public String getUser_email() {
         return user_email;
     }

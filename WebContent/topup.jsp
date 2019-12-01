@@ -16,7 +16,7 @@
       <h1>  <%=user.getUsername()%></h1>
       <h2>余额:<%=user.getMoney() %></h2>
      
-      <form method="post" action="topup">
+      <form method="post" action="Topup">
         <p><input type="number" min=0 name="topup" value="" placeholder="充值金额"></p>
         <p class="submit"><input type="submit" name="commit" value="充值"></p>
       </form>

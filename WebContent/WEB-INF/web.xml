@@ -44,4 +44,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>Detail</display-name>
+    <servlet-name>Detail</servlet-name>
+    <servlet-class>servlets.Detail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Detail</servlet-name>
+    <url-pattern>/Detail</url-pattern>
+  </servlet-mapping>
 </web-app>
