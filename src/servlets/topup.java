@@ -17,7 +17,7 @@ import utils.DatabaseManager;
 /**
  * Servlet implementation class topup
  */
-@WebServlet("/topup")
+@WebServlet("/Topup")
 public class topup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

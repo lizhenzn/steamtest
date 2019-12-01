@@ -110,7 +110,7 @@
 	 		</div>
 	 	</div>
 	 	</div>
-	 	<div class="infoblock"> 这是信息框 </div>
+	 	<div class="infoblock"> <img src="assets/forge.gif" width="256px" height="256px"/> </div>
 	 		
  	</div>
  	
