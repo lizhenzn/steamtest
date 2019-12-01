@@ -4,6 +4,7 @@
 <html>
 <head>
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="css/stars.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/register.js"></script>
  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <meta charset="UTF-8">
@@ -11,19 +12,27 @@
 </head>
 <body>
 <div class="head">
-	<div class="title">Steam Simulator</div>
+<img  id="mainicon" src="assets/globalheader_logo.png" ></img>
+	<div class="title">Simulator</div>
+	<div class="guidediv"   style= "position:absolute;left:45%;top:6%;">
+				<a href="index.jsp">游戏商店</a>
+				<a href="GameRepertory.jsp">游戏库</a>
+	</div>
 </div>
 	
 <div class="wrap">
+<canvas></canvas>
+ 	<script type="text/javascript" src="js/stars.js"></script>
 	<div class="content">Steam Simulator 您的游戏专属平台</div>
+	
 	<div class="login_frame" id="login_register">
 		<form action="LoginServlet" method="GET">
 		<div class="login_frame">
 		<p class="login_tip">登录</p>
-		<input type="text" placeholder="请输入用户名" id='user'>
+		<input type="text" placeholder="请输入邮箱" id='user'>
 		<input type="password" placeholder="请输入密码" id='psw'>
-		<input type="button" onclick="login()" value="登录" style="background-color: turquoise;">
-		<button onclick="onRegister()">点击注册</button>
+		<input type="button" onclick="login()" value="登录"style="background-color: turquoise;"/>
+		<input type="button" onclick="onRegister()" value="点击注册"style="background-color: turquoise;"/>
 		</div>
 		</form>
 	</div>

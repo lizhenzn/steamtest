@@ -8,10 +8,11 @@ body{
 .message{
 	width:86%;
 	text-align: center;
+	color:#e9e9e9;
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	background:#F7E16F;
+	background:#00062b;
 	border:1px solid black;
 	animation:message-box 0.3s;
 	animation-iteration-count:1;
@@ -32,12 +33,28 @@ body{
 	to{height:30px;}
 	}
 }
+
+.head .guidediv a{
+	color:#b8b6b4;
+}
+.head .guidediv a:visited{
+	color:#b8b6b4;
+}
+.head .guidediv a:hover{
+	color:#f4f4f4;
+}
+.head #mainicon{
+	left:13%;
+ 	float:left;
+	top:40px;
+	position:relative;
+}
 .head .title {
 	font-family: "STSong";
-	color: #FFFFFF;
+	color: #acb0af;
 	position: relative;
 	top: 50%;
-	left: 50%;
+	left: 25%;
 	transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
 	font-size: 36px;
 	height: 40px;
@@ -48,7 +65,6 @@ body{
 	width: 100%;
 	background-color: #171a21;
 	text-align: center;
-
 }
 .wrap {
 	height: 900px;
@@ -59,12 +75,10 @@ body{
 	background-position: center center;
 	display:block;
 }
-
 .foot {
 	width: 100%;
 	height: 100px;
-	bottom:0;
-	
+	bottom:0;	
 	background-color: #060d1e;
 	position: absolute;
 	display:block;
@@ -72,7 +86,6 @@ body{
 .wrap .login_frame {
 	box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 
 	border-radius: 6px;
-
 	width: 300px;  
 	right:15%;
 	top:20%;
@@ -94,7 +107,7 @@ body{
 	width: 86%;
 	font-size:14px;
 	padding: 10px;
-	border: #00f solid 1px;
+	border: #0095ee solid 1px;
 	border-radius: 6px;
 	display: block;
 }
@@ -115,14 +128,12 @@ body{
 }
 .wrap .content{
 	box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 
-
 	position: relative;
 	float: left;
-
-	width: 400px;
+	width: 40%;
 	height:60%;
 	top:10%;
-	left:20%;
+	left:10%;
 	border-radius: 6px;
 	color:turquoise;
 	font-size: 66px;

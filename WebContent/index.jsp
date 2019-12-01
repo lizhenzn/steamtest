@@ -61,7 +61,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <link href="css/stars.css" rel="stylesheet" type="text/css">
 <link href="css/gamelist.css" rel="stylesheet" type="text/css">
@@ -97,35 +96,30 @@
 </head>
 <body>
 <div class="head">
-	<div style="position:absolute;left:425px;top:50px;">
-	<table width=600px>
-		<tr>
-			<td>
-				<a href="index.jsp"><h2>游戏商店</h2></a>
-			</td>
-			<td>
-				<a href="GameRepertory.jsp"><h2>游戏库</h2></a>
-			</td>
-		</tr>
-	</table>
-</div>
+<img id="mainicon" src="assets/globalheader_logo.png" ></img>
+ 	<div class="title">Simulator</div>
+	<div class="guidediv"  style="position:absolute;left:45%;top:6%;" >
+				<a href="index.jsp">游戏商店</a>
+				<a href="GameRepertory.jsp">游戏库</a>
+	</div>
 
-<div style="position:absolute;right:50px;top:10px;">
+<div style="position:absolute;right:5%;top:10%;color:#b8b6b4 ;" class="guidediv">
 	<% Object object=session.getAttribute("user"); %>
 	<% if(object==null) {%>
 		<a href="login.jsp">登陆</a>
 	<% } else { %>
 	<% UserInfo user=(UserInfo)object;%>
-	<h3>用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="topup.jsp">充值</a></h3>
+	用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %>
+	<a href="topup.jsp">充值</a>
 	<%}%>
 </div>
-<h1 style="position:absolute; left:700px;top:100px;">游戏商店</h1>
 </div>
 
 <div class="wrap">
-
+<canvas></canvas>
+ 	<script type="text/javascript" src="js/stars.js"></script>	
   	<div class="gamelist" >
-  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%> 
+  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<8;i++){%> 
   	 	
   			<a class="gameitem"  href="detail.jsp" onclick="transGameInfo(<%=i %>)">
 			 		<img  class="gameimg"  src="<%= gameList.getGameItem(i).getImg1()%>"/>
@@ -155,13 +149,13 @@
   				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="lastPage">
   	</form>
-  	<form  method="POST">
+  	<form method="POST">
   				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="nextPage">
   	</form>
   </div>
 </div>
-
+<div class="foot"></div>
 <%
 	
 %>

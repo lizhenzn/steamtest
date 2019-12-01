@@ -21,12 +21,12 @@ public class GameList {
 		game_list.add(gameInfo);
 	}
 	public  GameInfo getGameItem(int num) {
-		if(num+page*5 >= game_list.size())
+		if(num+page*8 >= game_list.size())
 			return null;
-		return game_list.get(num+page*5);
+		return game_list.get(num+page*8);
 	}
 	public  void nextPage() {
-		if((page+1)*5 >= game_list.size())
+		if((page+1)*8 >= game_list.size())
 			return ;
 		page++;
 	}
