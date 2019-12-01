@@ -17,6 +17,9 @@ public class GameList {
 //		GameInfo gameInfo=new GameInfo(img,name);
 //		game_list.add(gameItem);
 //	}
+	public GameList(int page) {this.page=page;}
+	public GameList() {}
+	public int getPage() {return page;}
 	public  void addItem(GameInfo gameInfo) {
 		game_list.add(gameInfo);
 	}

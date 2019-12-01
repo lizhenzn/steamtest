@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 public class DatabaseManager {
-private static String  URL="jdbc:mysql://localhost:3306/steam?characterEncoding=utf-8&useUnicode=true";
+private static String  URL="jdbc:mysql://localhost:3306/steam?characterEncoding=utf-8&useUnicode=true&serverTimezone=GMT";
 private static String  USER="root";
-private static String  PSW="010233";
+private static String  PSW="root";
 private static Connection connection=null;
 
 public static  void createConnection()

@@ -1,0 +1,163 @@
+*{
+    margin:0;
+    padding:0
+}
+body{
+    background-color:#13181f;
+    position:'relative';
+}
+.func_bar{
+		box-shadow: 10px 10px 10px 5px rgba(1,1,1,0.9);/*黑色阴影，用rgba表示，透明度为0.9*/ 
+	
+    margin-top:60px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+    border:1px solid red;
+    border-radius: 6px;
+    
+}
+.clear{
+    clear: both;
+}
+.func_bar ul{
+    list-style: none;
+    display: inline-block;
+}
+li{
+    float: left;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+    color:white;
+    background-color: #408080176201201;
+    font-size: 20px;
+}
+li:hover{
+    background-color: darkgreen;
+    font-size: 30px;
+    padding: 1px;
+    color:rgb(204, 121, 121);
+    background-color: rgb(161, 145, 139);
+    border: 1px solid #413434;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color:rgb(245, 227, 227);
+    width:66%;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid red;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.list .listdiv{
+    margin: 10px;
+    border: 1px solid #13181f;
+    border-radius: 6px;
+    display: block;
+
+}
+.list .listdiv:hover{
+    
+    width:210px;
+    border: 1px solid red;
+    padding: 1px;
+    cursor: pointer;
+}
+.list div img{
+    margin-top: 2px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    border-radius: 6px;
+
+}
+.list div p{
+    text-align: center;
+   
+}
+.list button{
+    margin-left: 10px;
+    margin-bottom: 6px;
+    border: 1px solid #413434;
+    border-radius: 5px;
+    background-color:#13181f;
+    color: white;
+}
+.discount_frame{
+		box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.6);/*黑色阴影，用rgba表示，透明度为0.9*/ 
+	
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    width: 300px;
+    height: 400px;
+    background-color: #13181f;
+    border: 1px solid red;
+}
+.discount_frame p{
+    width: 86%;
+    margin: 6px auto;
+    display: block;
+    font-size:20px;
+    color:red;
+    border: 1 solid red;
+}
+.discount_frame input{
+    width: 86%;
+    margin: 20px auto;
+    display: block;
+ 	background-color:origin;
+    font-size:18px;
+    border: 1 solid red;
+    border-radius:6px;
+}
+.discount_frame button{
+    width: 86%;
+    display: block;
+    margin: 6px auto;
+    background-color: #0080c0;
+    border: 1 solid red;
+    border-radius:6px;
+}
+.discount_container{
+    z-index: 6;
+    display: none;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+.up_div{
+	width:86%;
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+}
+.up_div input{
+	font-size:18px;
+	display:block;
+	width:86%;
+	margin:20px auto;
+	border:1px solid red;
+	border-radius:6px;
+}
+.up_div button{
+	display:block;
+	width:86%;
+	margin:6px auto;
+	border:1px solid white;
+	border-radius:6px;
+}

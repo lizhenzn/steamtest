@@ -10,29 +10,32 @@
 <%@page import="databeans.*" %>
 <% 
 	GameList gameList=null;
-	if(request.getParameter("cmd")==null){
-		gameList=new GameList();
-		 Connection conn; 
-		 if((conn=DBCPManager.getConn())==null){
+	gameList=(GameList)session.getAttribute("GameList");
+if(gameList!=null)
+	gameList=new GameList(gameList.getPage());
+else
+	gameList=new GameList();
+	Connection conn; 
+	if((conn=DBCPManager.getConn())==null){
 		System.out.print("fail to connect dbcp\n");
-		}else { 
+	}else { 
 		System.out.print("connect to dbcp successfully\n");} 
-		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
-		  while(set.next()){  
-		  gameList.addItem(new GameInfo(set)); 
-		 }
-		 session.setAttribute("GameList", gameList); 
-		 conn.close(); 
+ 		ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
+ 		while(set.next()){  
+ 			gameList.addItem(new GameInfo(set)); 
+		}
+	session.setAttribute("GameList", gameList); 
+	conn.close();
+	if(request.getParameter("cmd")==null){
+		
 	}
 	else if(request.getParameter("cmd").equals("nextPage") ){
 		System.out.print("enter nextPage\n");
-		gameList=(GameList)session.getAttribute("GameList");
 		gameList.nextPage();
 		session.setAttribute("GameList",gameList);
 	}
 	else if (request.getParameter("cmd").equals("lastPage") ){
 		System.out.print("enter lastPage\n");
-		gameList=(GameList)session.getAttribute("GameList");
 		gameList.lastPage();
 		session.setAttribute("GameList",gameList);
 	}
