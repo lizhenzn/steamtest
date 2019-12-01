@@ -20,11 +20,6 @@
 		  ResultSet set= conn.createStatement().executeQuery("select * from game;"); 
 		  while(set.next()){  
 		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
-		  gameList.addItem(new GameInfo(set)); 
 		 }
 		 session.setAttribute("GameList", gameList); 
 		 conn.close(); 
@@ -66,8 +61,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="css/stars.css" rel="stylesheet" type="text/css">
+<link href="css/gamelist.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	function transGameInfo(index){
@@ -100,60 +96,66 @@
 </head>
 <body>
 <div class="head">
-	<div style="position:absolute;left:425px;top:50px;">
-	<table width=600px>
-		<tr>
-			<td>
-				<a href="index.jsp"><h2>游戏商店</h2></a>
-			</td>
-			<td>
-				<a href="GameRepertory.jsp"><h2>游戏库</h2></a>
-			</td>
-		</tr>
-	</table>
-</div>
+<img id="mainicon" src="assets/globalheader_logo.png" ></img>
+ 	<div class="title">Simulator</div>
+	<div class="guidediv"  style="position:absolute;left:45%;top:6%;" >
+				<a href="index.jsp">游戏商店</a>
+				<a href="GameRepertory.jsp">游戏库</a>
+	</div>
 
-<div style="position:absolute;right:50px;top:10px;">
+<div style="position:absolute;right:5%;top:10%;color:#b8b6b4 ;" class="guidediv">
 	<% Object object=session.getAttribute("user"); %>
 	<% if(object==null) {%>
 		<a href="login.jsp">登陆</a>
-		<a href="RegisterPage.jsp">注册</a>
 	<% } else { %>
 	<% UserInfo user=(UserInfo)object;%>
-	<h3>用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %><a href="topup.jsp">充值</a></h3>
+	用户名：<%= user.getUsername() %> 账户余额：<%= user.getMoney() %>
+	<a href="topup.jsp">充值</a>
 	<%}%>
 </div>
-<h1 style="position:absolute; left:700px;top:100px;">游戏商店</h1>
 </div>
 
 <div class="wrap">
-	<div style="position:absolute;left:100px;top:0px;">
-	 
-	<table border=0 id="gameInfo" style="position:absolute;left:50px;">
-  	<% %>
-  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<5;i++){%>  
-  	<tr>
-  			<td><a href="detail.jsp" onclick="transGameInfo(<%=i %>)"><img width=100 height=100 src="<%=gameList.getImg(i)%>"/></a></td>
-  			<td><%= gameList.getName(i) %></td>  		
-  	</tr>
+<canvas></canvas>
+ 	<script type="text/javascript" src="js/stars.js"></script>	
+  	<div class="gamelist" >
+  	<% for(int i=0;(gameList.getImg(i)!=null)&&i<8;i++){%> 
+  	 	
+  			<a class="gameitem"  href="detail.jsp" onclick="transGameInfo(<%=i %>)">
+			 		<img  class="gameimg"  src="<%= gameList.getGameItem(i).getImg1()%>"/>
+			 		<div class="gameinfo">
+			 			<div class="gametitle"><%=gameList.getGameItem(i).getName() %></div>
+<%-- 			 			<div class="extrainfo"><p><%=gameList.getIntro(i) %></p></div> --%>
+			 		</div>
+			 		<div class="gamemethod">
+			 			<% int discount=Integer.parseInt(gameList.getGameItem(i).getDiscount()); %>
+			 			<% if (discount!=0) {%>
+ 			 			<div class="gameprice discount"><%=gameList.getGameItem(i).getPrice() %></div>
+ 			 			<div class="gameprice priceshow"><p><%=(gameList.getGameItem(i).getPrice())*(1-(float)discount/100) %></p>
+ 			 			<p>(优惠 <%=discount %>%！)</p>
+ 			 			<%} else { %>
+ 			 			<div class="gameprice discount"></div>
+ 			 			<div class="gameprice priceshow"><p><%=gameList.getGameItem(i).getPrice() %></p>
+ 			 			<%} %>	 			
+ 			 			</div>
+			 		</div>
+		 		</a>			
   	
   	<%}%>
+  	</div>
   	  			
-  </table>
-  
-	</div>
 	<div style="position:absolute;right:200px;top:0px;">
   	<form  method="POST">
   				<input class="changePage" type="submit"  value="上一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="lastPage">
   	</form>
-  	<form  method="POST">
+  	<form method="POST">
   				<input class="changePage" type="submit"  value="下一页" style="width:50px;height:250px">
   				<input type="hidden" name="cmd" value="nextPage">
   	</form>
   </div>
 </div>
-
+<div class="foot"></div>
 <%
 	
 %>

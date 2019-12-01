@@ -13,7 +13,7 @@
    <% UserInfo user=(UserInfo)session.getAttribute("user"); %>
   <section class="container">
     <div class="topup">
-      <h1>  <%=user.getUsername()%></h1>
+      <h1> <%=user.getUsername() %></h1>
       <h2>余额:<%=user.getMoney() %></h2>
      
       <form method="post" action="Topup">
