@@ -8,9 +8,16 @@
 <title>游戏管理</title>
 </head>
 <body>
+<%UserInfo user=(UserInfo)session.getAttribute("user");
+String userName="";
+if(user!=null){
+	userName=user.getUsername();
+}
+%>
+	<div class="user_div">管理员：<%=userName %></div>
     <div class="func_bar">
         <ul class="clear">
-            <li onclick="show()">全部游戏</li>
+            <li onclick="refresh()">全部游戏</li>
             <li onclick="up()">上架</li>
         </ul>
     </div>
@@ -41,7 +48,7 @@
 				ResultSet rs=ps.executeQuery();
 				while(rs.next()) {//已经存在
 					GameInfo game=new GameInfo(rs);
-					System.out.println("");
+					System.out.println("rs得到");
 					list.add(game);
 											
 				}
@@ -65,7 +72,12 @@
                  }
             
         }
+        function refresh(){
+        	location.reload(true);
+        }
+        
         function show(){
+        	//location.reload(true);
             init();
             $('.list div button').on('click',function(){
                 choosedGame=$(this).parent().children()[1].innerHTML;
@@ -75,12 +87,6 @@
             console.log(button);
             if(button=='下架'){
                 if(confirm("确认要下架？")){
-                    /*for(var k=0;k<game.length;k++){
-                        if(game[k].name==choosedGame){
-                            game.splice(k,1);
-                            k--;
-                        }
-                    }*/
                     var systemURL="http://localhost:8080/SteamSimulator/ManagerServlet";      	
                 	//AJAX向后台发请求所有游戏信息
                 	 $.ajax({
@@ -94,13 +100,9 @@
                 		        if (data == "down-success") { //判断返回值，这里根据的业务内容可做调整
                 		        	//显示跳转提示
                 		        	console.log(data);
-                		        	for(var k=0;k<game.length;k++){
-                                        if(game[k].name==choosedGame){
-                                            game.splice(k,1);
-                                            k--;
-                                        }
-                                    }
+                		        	
                 		        	console.log('下架成功'+game);
+                		        	location.reload(true);
                 		        	//show();
                 		        	//console.log('下架成功show后'+game);
 
@@ -119,7 +121,6 @@
                 		  });
                     //show();
 
-                    alert('下架成功');
                 }else{
                     alert('取消下架');
                 }
@@ -130,7 +131,7 @@
         }
         //init();
         function up(){
-            var upHtml="<div class='up_div'><input type=\"text\" placeholder=\"请输入游戏名\" id=\"up_name\"><input type=\"number\" placeholder=\"售价\"  id=\"up_price\"><input type=\"text\" placeholder=\"简介\"  id=\"up_intro\"><button id='up_btn'>上架</button></div>";
+            var upHtml="<div class='up_div'><input type=\"text\" placeholder=\"请输入游戏名\" id=\"up_name\"><input type=\"number\" placeholder=\"售价\"  id=\"up_price\"><input type=\"text\" placeholder=\"简介\"  id=\"up_intro\"><button id='up_btn'>上架</button><div class=\"warn_div\" id=\"warn_div1\"></div><div class=\"warn_div\" id=\"warn_div2\"></div><div class=\"warn_div\"  id=\"warn_div3\"></div><div class=\"warn_div\"  id=\"warn_div4\"></div></div>";
             document.getElementById("container").innerHTML=upHtml;
             $('.up_div #up_btn').on('click',function(){
             	var systemURL="http://localhost:8080/SteamSimulator/ManagerServlet";      	
@@ -139,16 +140,31 @@
             	var price=document.getElementById('up_price');
             	var intro=document.getElementById('up_intro');
             	if(!gameName.value){
-            		alert("游戏名不能为空");
+            		document.getElementById('warn_div1').innerHTML="游戏名不能为空";
             		return false;
+            	}else{
+            		document.getElementById('warn_div1').innerHTML="";
             	}
             	if(!price.value){
-            		alert("价格不能为空");
+            		document.getElementById('warn_div2').innerHTML="价格不能为空";
             		return false;
+            	}else{//判断输入折扣是否符合
+            		document.getElementById('warn_div2').innerHTML="";
+            		if(parseFloat(price.value)<parseFloat(0)){
+                		document.getElementById('warn_div2').innerHTML="价格不能为负";
+                		return false;
+            		}else{
+                		document.getElementById('warn_div2').innerHTML="";
+            		}
+            		
+
             	}
             	if(!intro.value){
-            		alert("游戏简介不能为空");
+            		document.getElementById('warn_div3').innerHTML="游戏简介不能为空";
             		return false;
+            	}else{
+            		document.getElementById('warn_div3').innerHTML="";
+
             	}
             	 $.ajax({
             		    url : systemURL,// 获取自己系统后台用户信息接口
@@ -161,34 +177,42 @@
             		        if (data == "up-success") { //判断返回值，这里根据的业务内容可做调整
             		        	//显示跳转提示
             		        	console.log(data);
-            		           alert('上架成功');
+                        		document.getElementById('warn_div4').innerHTML="上架游戏成功...";
             		          } else if(data="up-fail"){
-            		        	  alert("上架失败！");
+                          		document.getElementById('warn_div4').innerHTML="上架游戏失败...";
             		          }
             		          else{
-            		        	 alert("上架异常，请稍后重试");
+                          		document.getElementById('warn_div4').innerHTML="上架游戏异常...";
             		          }
             		        }
             		      },
             		      error : function(data){
-            		        alert("网络错误，请稍后重试！");
+                      		document.getElementById('warn_div4').innerHTML="网络异常，请稍后再试...";
             		      }
             		  });
             })           
         }
         function discount(){
             console.log("选中的打折商品："+choosedGame);
-            var discountHtml="<div class=\"discount_frame\"><p id=discount_gamename>"+choosedGame+"</p><input type=\"number\" placeholder=\"请输入折扣\" id='dis_input'><button>打折</button></div>";
+            var discountHtml="<div class=\"discount_frame\"><p id=discount_gamename>"+choosedGame+"</p><input type=\"number\" placeholder=\"请输入折扣\" id='dis_input'><button id='dis_btn'>打折</button><button id='cancel_btn'>取消</button><div class=\"warn_div\" id=\"dis_warn1\"></div><div class=\"warn_div\" id=\"dis_warn2\"></div></div>";
             document.getElementById("discount_container").innerHTML=discountHtml;
             document.getElementById("discount_container").style.display='block';
             //TODO 实时监听discount 判断是否输入符合
             
-            $('.discount_container button').on('click',function(){
+            $('.discount_container #dis_btn').on('click',function(){
                 var discount=document.getElementById('dis_input');  //TODO
             	if(!discount.value){
-                	alert("折扣不能为空");
-                	document.getElementById('discount_container').innerHTML='';
-                	return false;
+            		document.getElementById('dis_warn1').innerHTML='*输入框不能为空';
+            		return false;
+                }else{
+            		document.getElementById('dis_warn1').innerHTML='';
+					if((parseInt(discount.value)<0)||(parseInt(discount.value)>100)){
+	            		document.getElementById('dis_warn1').innerHTML='*输入不符合标准(0-100)';
+	            		return false;
+					}else{
+	            		document.getElementById('dis_warn1').innerHTML='';
+
+					}
                 }
                 
             	 var systemURL="http://localhost:8080/SteamSimulator/ManagerServlet";  
@@ -204,24 +228,28 @@
          		        if (data == "discount-success") { //判断返回值，这里根据的业务内容可做调整
          		        	//显示跳转提示
          		        	console.log(data);
-         		           alert('打折成功');
+                    		document.getElementById('dis_warn2').innerHTML='打折成功';
          		          } else if(data="discount-fail"){
-         		        	  alert("打折失败！");
+         	            		document.getElementById('dis_warn2').innerHTML='打折失败';
          		          }
          		          else{
-         		        	 alert("打折异常，请稍后重试");
+         		        	 document.getElementById('dis_warn2').innerHTML="打折异常，请稍后重试";
          		          }
          		        }
          		      },
          		      error : function(data){
-         		        alert("网络错误，请稍后重试！");
+         		    	 document.getElementById('dis_warn2').innerHTML="网络错误，请稍后重试";
          		      }
          		  });
-            	 document.getElementById("discount_container").innerHTML='';
                 
             });
+            $('.discount_container #cancel_btn').on('click',function(){
+              	 document.getElementById("discount_container").innerHTML='';
+               });
 
         }
+        
+
 
         
         $('ul li').on('click',function(){
